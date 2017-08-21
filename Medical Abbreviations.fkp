@@ -1,0 +1,454 @@
+﻿::AAA::abdominal aortic aneurysm
+::A-a::alveolar to arterial gradient
+::AAD::antibiotic-associated diarrhea
+::AAO::alert, awake, and oriented
+::A&O::alert & oriented
+::AAS::acute abdominal series
+::ABD::abdomen
+::ABG::arterial blood gas
+::AC::before eating
+::ACLS::advanced cardiac life support
+::ACTH::adrenocorticotropic hormone
+::ADH::anti-diuretic hormone
+::ADR::adverse drug reaction
+::adlib::as much as needed
+::AED::antiepileptic drug
+::AF::atrial fibrillation or afebrile
+::AFB::acid-fast bacilli
+::AFP::alpha-fetoprotein
+::A/G::albumin/globulin ratio
+::AI::aortic insufficiency
+::AKA::above the knee amputation
+::ALD::alcoholic liver disease
+::ACLL::acute lymphocytic leukemia
+::amb::ambulate
+::AML::acute myelogenous leukemia
+::ANA::antinuclear antibody
+::ANS::autonomic nervous system
+::AOB::alcohol on breath
+::AODM::adult onset diabetes mellitus
+::AP::anteroposterior or abdominal - perineal
+::ARDS::acute respiratory distress syndrome
+::ARF::acute renal failure
+::AS::aortic stenosis
+::ASAP::as soon as possible
+::ASCVD::atherosclerotic cardiovascular disease
+::ASD::atrial septal defect
+::ASHD::atherosclerotic heart disease
+::AV::atrioventricular
+::A-V::arteriovenous
+::A-VO2::arteriovenous oxygen
+::BBB::bundle branch block
+::BCAA::branched chain amino acids
+::BE::barium enema
+::BEE::basal energy expenditure
+::bid::twice a day
+::BKA::below the knee amputation
+::BM::bone marrow or bowel movement
+::BMR::basal metabolic rate
+::BOM::bilateral otitis media
+::BP::blood pressure
+::BPH::benign prostatic hypertrophy
+::BPM::beats per minute
+::BRBPR::bright red blood per rectum
+::BRP::bathroom priviledges
+::BS::bowel or breath sounds
+::BUN::blood urea nitrogen
+::BW::body weight
+::BX::biopsy
+::C&S::culture and sensitivity
+::CA::cancer
+::Ca::calcium
+::CAA::crystalline amino acids
+::CABG::coronary artery bypass graft
+::CAD::coronary artery disease
+::CAT::computerized axial tomography
+::CBC::complete blood count
+::CBG::capillary blood gas
+::CCU::clean catch urine or cardiac care unit
+::CCV::critical closing volume
+::CF::cystic fibrosis
+::CGL::chronic granulocytic leukemia
+::CHF::congestive heart failure
+::CHO::carbohydrate
+::CI::cardiac index
+::CML::chronic myelogenous leukemia
+::CMV::cytomegalovirus
+::CN::cranial nerves
+::CNSÿ::central nervous system
+::CO::cardiac output
+::C/O::complaining of
+::COLD::chronic obstructive lung disease
+::COPD::chronic obstructive pulmonary disease
+::CP::chest pain or cerebral palsy
+::CPAP::continuous positive airway pressure
+::CPK::creatine phosphokinase
+::CPR::cardiopulmonary resuscitation
+::CRCL::creatinine clearance
+::CRF::chronic renal failure
+::CRP::C-reactive protein
+::CSF::cerebrospinal fluid
+::CT::computerized tomography
+::CVA::cerebrovascular accident or costovertebral angle
+::CVAT::CVA tenderness
+::CVP::central venous pressure
+::CXR::chest X-ray
+::DAT::diet as tolerated
+::DAW::dispense as written
+::DC::discontinue or discharge
+::D&C::dilation and curettage
+::DDx::differential diagnosis
+::D5W::5% dextrose in water
+::DI::diabetes insipidus
+::DIC::disseminated intravascular coagulopathy
+::DIP::distal interphalangealÿ joint
+::DJD::degenerative joint disease
+::DKA::diabetic ketoacidosis
+::dL::deciliter
+::DM::diabetes mellitus
+::DNR::do not resuscitate
+::DOA::dead on arrival
+::DOE::dyspnea on exertion
+::DPL::diagnostic peritoneal lavage
+::DPT::diphtheria, pertussis, tetanus
+::DTR::deep tendon reflexes
+::DVT::deep venous thrombosis
+::DX::diagnosis
+::EAA::essential amino acids
+::EBL::estimated blood loss
+::ECG::electrocardiogram
+::ECT::electroconvulsive therapy
+::EFAD::essential fatty acid deficiency
+::EMG::Electromyogram
+::EMV::eyes, motor, verbal response (Glasgow coma scale)
+::ENT::ears, nose, and throat
+::EOM::extraocular muscles
+::ESR::erythrocyte sedimentation rate
+::ET::endotracheal
+::ETT::endotracheal tube
+::ERCP::endoscopic retrograde cholangio-pancreatography
+::ETOH::ethanol
+::EUA::examination under anesthesia
+::FBS::fasting blood sugar
+::FEV::forced expiratory volume
+::FFP::fresh frozen plasma
+::FRC::functional residual capacity
+::FTT::failure to thrive
+::FU::follow-up
+::FUO::fever of unknown origin
+::FVC::forced vital capacity
+::Fx::fracture
+::GC::gonorrhea
+::GETT::general by endotracheal tube
+::GFR::glomerular filtration rate
+::GI::gastrointestinal
+::GSW::gun shot wound
+::gt::drops
+::GTT::glucose tolerance test
+::GU::genitourinary
+::GXT::graded exercise tolerance (Stress test)
+::HA::headache
+::HAA::hepatitisÿ B surface antigen
+::HAV::hepatitis A virus
+::HBP::high blood pressure
+::HCG::human chorionic gonadotropin
+::HCT::hematocrit
+::HDL::high density lipoprotein
+::HEENT::head, eyes, ears, nose, throat
+::Hgb::hemoglobin
+::H/H::henderson-hasselbach equation or hemoglobin/hematocrit
+::HIV::human immunodeficiency virus
+::HLA::histocompatibility locus antigen
+::HJR::hepatojugular reflex
+::HO::history of
+::HOB::head of bed
+::HPF::high power field
+::HPI::history of present illness
+::HR::heart rate
+::HS::at bedtime
+::HSM::hepatosplenomegaly
+::HTLV-III::human lymphotropic virus, type III (AIDS agent, HIV)
+::HSV::herpes simplex virus
+::HTN::hypertension
+::Hx::history
+::I&D::incision and drainage
+::I&O::intake and output
+::ICS::intercostal space
+::ICU::intensive care unit
+::ID::infectious disease or identification
+::IDDM::insulin dependent diabetes mellitus
+::IG::immunoglobulin
+::IHSS::idiopathic hypertropic subaortic stenosis
+::IM::intramuscular
+::IMV::intermittent mandatory ventilation
+::INF::intravenous nutritional fluid
+::IPPB::intermittent positive pressure breathing
+::IRBBB::incomplete right bundle branch block
+::IRDM::insulin resistant diabetes mellitus
+::IT::interthecal
+::ITP::idiopathic thrombocytopenic purpura
+::IV::intravenous
+::IVC::intravenous cholangiogram
+::IVP::intravenous pyelogram
+::JODM::juvenile onset diabetes mellitus
+::JVD::ÿjugular venous distention
+::KOR::keep open rate
+::KUB::kidneys, ureters, bladder
+::KVO::keep vein open
+::LAD::left axis deviation or left anterior descending
+::LAE::left atrial enlargement
+::LAHB::left anterior hemiblock
+::LAP::left atrial pressure or leukocyte alkaline phosphatase
+::LBBB::left bundle branch block
+::LDH::lactate dehydrogenase
+::LE::lupus erythematosus
+::LIH::left inguinal hernia
+::LLL::left lower lobe
+::LMP::last menstrual period
+::LNMP::last normal menstrual period
+::LOC::loss of consciousness or level of consciousness
+::LP::lumbar puncture
+::LPN::licensed practical nurse
+::LUL::left upper lobe
+::LUQ::Left Upper Quadrant
+::LV::left ventricle
+::LVEDP::left ventricular end diastolic pressure
+::LVH::left ventricular hypertrophy
+::MAO::monoamine oxidase
+::MAP::mean arterial pressure
+::MAST::medical antishock trousers
+::MBT::maternal blood type
+::MCH::mean cell hemoglobin
+::MCHC::mean cell hemoglobin concentration
+::MCV::mean cell volume
+::MI::myocardial infarction or mitral insufficiency
+::MLE::midline episiotomy
+::MMEF::maximal mid expiratory flow
+::mmol::millimole
+::MMR::measles, mumps, rubella
+::MRI::magnetic resonance imaging
+::MRSA::methicillin resistant staph aureus
+::MS::multiple sclerosis
+::MSSA::methicillin-sensitive staph aureus
+::MVA::motor vehicle accident
+::MVI::multivitamin injection
+::MVV::maximum voluntary ventilation
+::NAD::no active disease
+::NAS::no added salt
+::NCV::nerve conduction velocity
+::NED::no evidence of recurrent disease
+::NG::nasogastric
+::NIDDM::non-insulin dependent diabetes mellitus
+::NKA::no known allergies
+::NKDA::no known drug allergies
+::NMR::nuclear magnetic resonance
+::NPO::nothing by mouth
+::NRM::no regular medications
+::NSAID::non-steroidal anti-inflammatory drugs
+::NSR::normal sinus rhythm
+::NT::nasotracheal
+::OB::obstetrics
+::OCG::oral cholecystogram
+::OD::overdose or right eye
+::OM::otitis media
+::OOB::out of bed
+::OOP::out of plaster
+::OPV::oral polio vaccine
+::OR::operating room
+::OS::left eye
+::OU::both eyes
+::PA::posteroanterior
+::PAC::premature atrial contraction
+::PAO2::alveolar oxygen
+::PaO2::peripheral arterial oxygen content
+::PAP::pulmonary artery pressure
+::PAT::paroxysymal atrial tachycardia
+::P&PD::percussion and postural drainage
+::PC::after eating
+::PCWP::pulmonary capillary wedge pressure
+::PDA::patent ductus arteriosus
+::PDR::physicians desk reference
+::PE::pulmonary embolus
+::PEEP::positive end expiratory pressure
+::PFT::pulmonary function tests
+::PI::pulmonic insufficiency disease
+::PKU::phenylketonuria
+::PMH::previous medical history
+::PMI::point of maximal impulse
+::PMN::polymorphonuclear leukocyte (neutrophil)
+::PND::paroxysmal nocturnal dyspnea
+::PO::by mouth
+::POD::post-op day
+::PP::postprandial or pulsus paradoxus
+::PPD::purified protein derivative
+::PR::by rectum
+::PRBC::packed red blood cells
+::PRN::as needed
+::PS::pulmonic stenosis
+::PT::prothrombin time
+::Pt::patient
+::PTCA::percutaneous transluminal coronary angioplasty
+::PTH::parathyroid hormone
+::PTHC::percutanous transhepatic cholangiogram
+::PTT::partial thromboplastin time
+::PUD::peptic ulcer disease
+::PVC::premature ventricular contraction
+::PVD::peripheral vascular disease
+::qh::every hour
+::q4h::every 4 hours
+::q6h::every 6 hours
+::q8h::every 8 hours
+::q12h::every 12 hours
+::qid::four times a day
+::QNS::quantity not sufficient
+::Qs/Qt::shunt fraction
+::Qt::total cardiac output
+::RA::rheumatoid arthritis or right atrium
+::RAD::right atrial axis deviation
+::RAE::right atrial enlargement
+::RAP::right atrial pressure
+::RBBB::right bundle branch block
+::RBC::red blood cell
+::RBP::retinol-binding protein
+::RDA::recommended daily allowance
+::RDW::red cell distribution width
+::RIA::radioimmunoassay
+::RIH::right inguinal hernia
+::RLL::right lower lobe
+::RLQ::right lower quadrant
+::RML::right middle lobe
+::RNA::ribonucleic acid
+::R/O::rule out
+::ROM::range of motion
+::ROS::review of systems
+::RPG::retrograde pyelogram
+::RRR::regular rate and rhythm
+::RT::respiratory or radiation therapy
+::RTA::renal tubular acidosis
+::RTC::return to clinic
+::RU::resin uptake
+::RUG::retrograde urethogram
+::RUL::right upper lobe
+::RUQ::right upper quadrant
+::RV::residual volume
+::RVH::right ventricular hyperthrophy
+::Rx::treatment
+::SA::sinoatrial
+::SAA::synthetic amino acid
+::S&E::sugar and acetone
+::SBE::subacute bacterial endocarditis
+::SBFT::small bowel follow through
+::SBS::short bowel syndrome
+::SCr::serum creatinine
+::SEM::systolic ejection murmur
+::SG::Swan-Ganz
+::SGA::small for gestational age
+::SGGT::serum gamma - glutamyl transpeptidase
+::SGOT::serum glutamic - oxaloacetic transaminase
+::SGPT::serum glutamic - pyruvic transaminase
+::SIADH::syndrome of inappropriate antidiuretic hormone
+::sig::write on label
+::SIMV::synchronous intermittent mandatory ventilation
+::sl::sublingual
+::SLE::systemic lupus erythematous
+::SMO::slips made out
+::SOAP::subjective, objective, assessment, plan
+::SOB::shortness of breath
+::SQ::subcutaneous
+::STAT::immediately
+::SVD::spontaneous vaginal delivery
+::Sx::symptoms
+::T&C::type and cross
+::TAH::total abdominal hysterectomy
+::T&H::type and hold
+::TB::tuberculosis
+::TBG::total binding globulin
+::Td::tetanus-diphtheria toxoid
+::TIA::transient ischemic attack
+::TIBC::total iron binding capacity
+::tid::three times a day
+::TIG::tetanus immune globulin
+::TKO::to keep open
+::TLC::total lung capacity
+::TMJ::temporo mandibular joint
+::TNTC::too numerous to count
+::Telord::telephone order
+::TOPV::trivalent oral polio vaccine
+::TPN::total parenteral nutrition
+::TSH::thyroid stimulating hormone
+::TT::thrombin time
+::TTP::thrombotic thrombocytopenic purpura
+::TU::tuberculin units
+::TUR::transurethral resection
+::TURBT::TUR bladder tumors
+::TURP::transurethral resection of prostate
+::TV::tidal volume
+::TVH::total vaginal hysterectomy
+::tw::twice a week
+::Tx::treatment
+::UA::urinalysis
+::UAC::uric acid
+::UAO::upper airway obstruction
+::UBD::universal blood donor
+::UC::ulcerative colitis
+::ud::as directed
+::UFH::unfractionated heparin
+::UGI::upper gastrointestinal
+::URI::upper respiratory infection
+::URQ::upper right quadrant
+::US::ultrasound
+::UTI::urinary tract infection
+::UUN::urinary urea nitrogen
+::UVA::ultraviolet A light
+::VAD::venous access device
+::VC::vital capacity
+::VCT::venous clotting time
+::VCUG::voiding cysourethrogram
+::VDRL::Venereal Disease Research Laboratory (test for syphilis)
+::VMA::vanillymadelic acid
+::VO::verbal or voice order
+::V/Q::ventilation - perfusion
+::VRE::vancomycin-resistant enterococcus
+::VSS::vital signs stable
+::VT::ventricular tachycardia
+::VV::varicose veins
+::VW::vessel wall
+::VWD::von Willebrand's disease
+::VZV::varicella zoster virus
+::WB::whole blood
+::WBC::white blood cell or count
+::WBR::whole body radiation
+::WD::well developed
+::WF::white female
+::WIA::wounded in action
+::WID::widow
+::WM::white male
+::WN::well nourished
+::WNL::within normal limits
+::WOP::without pain
+::W.P.::whirlpool
+::WPW::Wolff-Parkinson-White
+::W-T-D::wet to dry
+::W/U::workup
+::X2d::times 2 days
+::XI::eleven
+::XII::twelve
+::XL::extended release
+::XM::crossmatch
+::XMM::xeromammography
+::XOM::extraocular movements
+::XRT::X-ray therapy (radiation therapy)
+::XS::excessive
+::XULN::times upper limit of normal
+::YF::yellow fever
+::YLC::youngest living child
+::yo::years old
+::YOB::year of birth
+::yr::year
+::ytd::year to date
+::ZDV::zidovudine
+::ZE::Zollinger-Ellison
+::Z-ESR::zeta erythrocyte sedimentation rate
+::Zn::zinc
+::ZnO::zinc oxide
+::ZSB::zero stools since birth

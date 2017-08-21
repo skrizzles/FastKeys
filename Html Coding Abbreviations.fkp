@@ -1,0 +1,43 @@
+﻿::<!--::<{!}--  -->{Left 4}
+::<!doctype::<{!}DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"`n"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+::<a_href::<a href="" title=""></a>{Left 15}
+::<blockquote>::<blockquote></blockquote>{Left 13}
+::<body>::<body>`n`n</body>{Left 8}
+::<button_submit::<button type="submit" name="submit" value="submit"><img src="" width="" height="" alt=""></button>{Left 37}
+::<dd>::<dd></dd>{Left 5}
+::<div>::<div id="" class=""></div>{Left 17}
+::<dl>::<dl></dl>{Left 5}
+::<dt>::<dt></dt>{Left 5}
+::<em>::<em></em>{Left 5}
+::<form>::<form action="" method=""</form>{Left 18}
+::<h1>::<h1></h1>{Left 5}
+::<h2>::<h2></h2>{Left 5}
+::<h3>::<h3></h3>{Left 5}
+::<h4>::<h4></h4>{Left 5}
+::<h5>::<h5></h5>{Left 5}
+::<h6>::<h6></h6>{Left 5}
+::<head>::<head></head>{Left 7}
+::<html>::<html`nxmlns="http://www.w3.org/1999/xhtml">`n</html>{Left 7}
+::<img>::<img src="" alt="" width="" height=" border="0"/>{Left 39}
+::<input_checkbox::<input type="checkbox" name="" value="" />{Left 13}
+::<input_hidden::<input type="hidden" name="" value="" />{Left 13}
+::<input_radio::<input type=""radio" name="" value="" />{Left 13}
+::<input_reset::<input type="reset" value=""/>{Left 3}
+::<input_text::<input type="text" name="" value="" size="" />{Left 21}
+::<li>::<li></li>{Left 5}
+::<link_style::<link rel="stylesheet" href="" type="text/css" media="screen">{Left 33}
+::<noscript>::<noscript></noscript>{Left 11}
+::<ol>::<ol></ol>{Left 5}
+::<option>::<option value=""/>{Left 3}
+::<p>::<p></p>{Left 4}
+::<script>::<script type="text/javascript" language="Javascript" src=""></script>{Left 11}
+::<select>::<select name=""></select>{Left 11}
+::<span>::<span id="" class=""></span>{Left 18}
+::<strong>::<strong></strong>{Left 9}
+::<table>::<table border="0" width="">`n`n</table>{Left 9}
+::<td>::<td></td>{Left 5}
+::<textarea>::<textarea name="textarea" rows="" cols="" wrap="wrap"></textarea>{Left 11}
+::<title>::<title></title>{Left 8}
+::<tr>::<tr>`n`t`n</tr>{Left 6}
+::<ul>::<ul></ul>{Left 5}
+::contenttype::<meta http-equiv="content-type" content="text/html; charset=UTF-8" />

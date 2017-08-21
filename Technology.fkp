@@ -1,0 +1,11 @@
+﻿::spp::SPP
+::hid::HID
+::bluetooth::Bluetooth
+::ble::BLE
+::usb::USB
+::rs232::RS-232
+::wifi::Wi-Fi
+::ios::iOS
+::android::Android
+::ip::IP
+::ascii::ASCII
