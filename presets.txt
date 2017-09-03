@@ -1,0 +1,594 @@
+﻿1•C•Disable a Key or Shortcut•Return•••
+1•C•Swap Key•Send {Space}¶;replace {} with any key•••
+1•C•Change Shortcut•Send ^a¶;replace with any shortcut•••
+1•C•Next Application•Send !{Tab}•••
+1•C•Empty Trash•FileRecycleEmpty•••
+1•C•Paste Without Formatting•clipboard := clipboard¶Send, ^{vk56} ;Ctrl V•••
+1•C•Paste Text to Notepad•Send, ^{vk43} ;Ctrl C¶Run, notepad.exe¶WinWait, Notepad¶WinActivate¶Send, ^{vk56} ;Ctrl V{Enter}•••
+1•C•RGB Color Under Cursor•Loop¶{¶Sleep,100¶MouseGetPos,x,y¶PixelGetColor,rgb,x,y,RGB¶StringTrimLeft,rgb,rgb,2¶ToolTip,%rgb%¶GetKeyState, state, esc¶if state = D¶ break¶}¶ToolTip•••
+1•C•Instant Text Calculator•ClipSave:=Clipboard¶Clipboard=¶Send ^{vk58} ;Ctrl X¶Run calc.exe¶WinWaitActive Calculator¶Send %Clipboard%¶Send {Enter}¶Sleep 250¶Clipboard=¶Send ^{vk43} ;Ctrl C¶ClipWait 1¶WinClose¶Send %Clipboard%¶Clipboard:=ClipSave•••
+1•C•Double Ctrl Run•If (A_PriorHotKey = A_ThisHotKey and A_TimeSincePriorHotkey < 350)¶  Run Notepad ;change with the program to run•Ctrl•Ctrl•
+1•C•Convert Text to Upper•Old:=Clipboard¶Clipboard:=""¶Send, ^{vk43} ;Ctrl C¶ClipWait 1¶StringUpper Clipboard, Clipboard¶Send %Clipboard%¶Sleep 1000¶Clipboard:=Old•••
+1•C•Convert Text to Lower•Old:=Clipboard¶Clipboard:=""¶Send, ^{vk43} ;Ctrl C¶ClipWait 1¶StringLower Clipboard, Clipboard¶Send %Clipboard%¶Sleep 1000¶Clipboard:=Old•••
+1•C•Convert Text to Capitalized•Old:=Clipboard¶Clipboard:=""¶Send, ^{vk43} ;Ctrl C¶ClipWait 1¶StringUpper Clipboard, Clipboard, T¶Send %Clipboard%¶Sleep 1000¶Clipboard:=Old•••
+1•C•Remove Unnecessary Spaces•SavedClip := ClipboardAll¶Clipboard =¶Send ^{vk43} ;Ctrl C¶ClipWait 1¶TempText:=Clipboard¶Loop ¶{ ¶ StringReplace, TempText, TempText, %A_Space%%A_Space%, %A_Space%, UseErrorLevel¶ if ErrorLevel = 0¶   break¶}¶Clipboard =¶Sleep 20¶Clipboard := TempText¶Send ^{vk56} ;Ctrl V¶Sleep 100¶Clipboard := SavedClip•••
+1•C•Boss Key Simple•Send {Volume_Down 100}¶Send {Media_Play_Pause}¶tmm:=A_TitleMatchMode¶SetTitleMatchMode, 2¶WinMinimize, A¶WinActivate, Outlook¶SetTitleMatchMode, %tmm%•••
+1•C•Open Selected Text in Notepad•Old:=Clipboard¶Clipboard:=""¶Send, ^{vk43} ;Ctrl C¶ClipWait 1¶Run, notepad¶Sleep 200¶SendInput, %Clipboard%¶Clipboard:=Old•••
+1•C•Simulate Double Click Mouse•Send {Click 2}•••
+1•C•Command Prompt from Explorer•Clip:=ClipboardAll¶Send !{vk44} ;!d¶Sleep 30¶Send ^{vk43} ;Ctrl C¶Run, cmd /K "cd `"%clipboard%`""¶Clipboard:= Clip¶Clip=•••ahk_class CabinetWClass 
+1•C•Put Text in Quotes•SavedClip := ClipboardAll¶Clipboard =¶Send ^{vk43} ;Ctrl C¶ClipWait 1¶Tmp:=Clipboard¶Tmp = "%Tmp%"¶; Remove space introduced by WORD¶StringReplace, Tmp, Tmp,%A_SPACE%",", All¶Clipboard =¶Sleep 20¶Clipboard := Tmp¶Send ^{vk56} ;Ctrl V¶Sleep 100¶Clipboard := SavedClip•••
+1•C•CapsLock Doubleclick Change Case•If (A_PriorHotKey = A_ThisHotKey and A_TimeSincePriorHotkey < 350)¶{¶  origClipboard=%clipboard%¶  clipboard=¶  SendInput, ^{vk43} ;Ctrl C¶  ClipWait, 2¶  if not ErrorLevel¶  {¶    allCapsBool=1¶    Loop, parse, clipboard¶    {¶      if A_Loopfield is lower¶        allCapsBool = 0¶    }¶    if allCapsBool¶      StringLower, clipboard, clipboard¶    else¶      StringUpper, clipboard, clipboard¶    SendInput, ^{vk56} ;Ctrl V¶    Sleep, 350¶  }¶  clipboard=%origClipboard%¶} ¶return•~CapsLock•CapsLock•
+1•C•Auto Copy Selected Text to Clipboard•md_treshold:=20 ;pixels  ¶MouseGetPos, mdx, mdy¶KeyWait LButton¶MouseGetPos, mdx2, mdy2¶if (abs(mdx2-mdx)>md_treshold or abs(mdy2-mdy)>md_treshold)¶   SendInput ^{vk43} ;Ctrl C•~LButton•LButton•
+1•C•Paste from Clipboard•Send ^{vk56} ;Ctrl V•••
+1•C•Go One Level Up in Explorer•Send !{Up}•••
+1•C•Create New Folder in Explorer•Send !2•••ahk_class CabinetWClass
+1•C•Open Cmd from Explorer Simple•Send ¸!{vk46}{vk50} ;!fp•••ahk_class CabinetWClass
+1•C•Show Cursor Position•Loop¶{¶Sleep,100¶MouseGetPos,x,y¶ToolTip,x:%x% y:%y%¶GetKeyState, state, esc¶if state = D¶ break¶}¶ToolTip•••
+1•C•Eject Disk Drive•Drive, Eject¶if A_TimeSinceThisHotkey < 1000¶{¶ Drive, Eject,, 1¶}•••
+1•C•Sleep Display and Lock•Sleep 1000¶SendMessage, 0x112, 0xF170, 2,, Program Manager¶DllCall("LockWorkStation")•••
+1•C•Toggle Hidden Files and Folders Status•RegRead, HiddenFiles_Status, HKEY_CURRENT_USER, Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced, Hidden ¶¶If HiddenFiles_Status = 2¶RegWrite, REG_DWORD, HKEY_CURRENT_USER, Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced, Hidden, 1¶¶Else¶RegWrite, REG_DWORD, HKEY_CURRENT_USER, Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced, Hidden, 2¶¶send {F5}•••
+1•C•Turn Monitor Off•Sleep 1000¶SendMessage, 0x112, 0xF170, 2,, Program Manager•••
+1•C•Browser Back•Send {Browser_Back}•••
+1•C•Browser Forward•Send {Browser_Forward}•••
+1•C•Toggle Language•toggle34:=!toggle34¶If Toggle34¶  PostMessage, 0x50, 0x02,0,, A¶else¶  PostMessage, 0x50, 0, 0x4090409,, A•••
+1•C•Capslock State Sound Warning•If GetKeyState("Capslock", "T")¶  SoundBeep, 750, 150¶Else¶  SoundBeep, 523, 150¶Return•~*CapsLock•CapsLock•
+1•C•Move Left Fast•Send {Left 5}•^Left•Ctrl + Left•
+1•C•Move Right Fast•Send {Right 5}•^Right•Ctrl + Right•
+1•C•Move Up Fast•Send {Up 5}•^Up•Ctrl + Up•
+1•C•Move Down Fast•Send {Down 5}•^Down•Ctrl + Down•
+2•C•Minimize Active Window•WinMinimize, A•••
+2•C•Minimize All Windows•WinMinimizeAll•••
+2•C•Window Always on Top•Winset,AlwaysOnTop,,A•••
+2•C•Toggle Last Two Windows•Send !{Tab}•••
+2•C•Alt drag window•CoordMode, Mouse¶MouseGetPos, EWD_MouseStartX, EWD_MouseStartY, EWD_MouseWin¶WinGetPos, EWD_OriginalPosX, EWD_OriginalPosY,,, ahk_id %EWD_MouseWin%¶WinGet, EWD_WinState, MinMax, ahk_id %EWD_MouseWin% ¶if EWD_WinState = 0¶    SetTimer, EWD_WatchMouse, 10¶return¶¶EWD_WatchMouse:¶GetKeyState, EWD_LButtonState, LButton, P¶if EWD_LButtonState = U¶{¶    SetTimer, EWD_WatchMouse, off¶    return¶}¶GetKeyState, EWD_EscapeState, Escape, P¶if EWD_EscapeState = D¶{¶    SetTimer, EWD_WatchMouse, off¶    WinMove, ahk_id %EWD_MouseWin%,, %EWD_OriginalPosX%, %EWD_OriginalPosY%¶    return¶}¶CoordMode, Mouse¶MouseGetPos, EWD_MouseX, EWD_MouseY¶WinGetPos, EWD_WinX, EWD_WinY,,, ahk_id %EWD_MouseWin%¶SetWinDelay, -1¶WinMove, ahk_id %EWD_MouseWin%,, EWD_WinX + EWD_MouseX - EWD_MouseStartX, EWD_WinY + EWD_MouseY - EWD_MouseStartY¶EWD_MouseStartX := EWD_MouseX¶EWD_MouseStartY := EWD_MouseY¶return•••
+2•C•Maximize Window Toggle•WinGet MX, MinMax, A¶if MX¶ WinRestore A¶else WinMaximize A•••
+2•C•Resize Window•WinGetPos,X,Y¶WinMove,A,,%X%,%Y%,800,600  ;change to desired width/height•••
+2•C•Move Window Right One Monitor•WinGet, mm, MinMax, A¶WinRestore, A¶WinGetPos, X, Y,,,A¶WinMove, A,, X+A_ScreenWidth, Y¶if(mm = 1){¶WinMaximize, A¶}•#Right•Win + Right•
+2•C•Move Window Left One Monitor•WinGet, mm, MinMax, A¶WinRestore, A¶WinGetPos, X, Y,,,A¶WinMove, A,, X-A_ScreenWidth, Y¶if(mm = 1){¶WinMaximize, A¶}•#Left•Win + Left•
+2•C•Double-click Esc Close App•if (A_ThisHotKey=A_PriorHotKey and A_TimeSincePriorHotkey<350)¶{¶ Send !{F4}¶ Sleep 1000¶}•~Escape•Escape•
+2•C•Double-click Esc Minimize Window•if (A_ThisHotKey=A_PriorHotKey and A_TimeSincePriorHotkey<350)¶  WinMinimize, A•~Escape•Escape•
+2•C•Double-click Esc Close Window/Tab•WinGetClass Class, A¶If (A_ThisHotKey = A_PriorHotkey && A_TimeSincePriorHotkey < 350)¶ If Class in MozillaWindowClass,IEFrame¶  Send ^{vk57} ;Ctrl w¶ Else¶  Send !{F4}•~Escape•Escape•
+2•C•Hold Esc Close Window•KeyWait, Escape, T0.6    ; 0.6 msec¶If ErrorLevel¶  Send !{F4}¶Else¶  Send {Esc}•$Escape•Escape•
+2•C•Restore Window•WinRestore A•••
+2•C•Resize Window To•Width:=800¶Height:=600¶WinGetPos,X,Y,W,H,A¶If %Width% = 0¶ Width := W¶If %Height% = 0¶ Height := H¶WinMove,A,,%X%,%Y%,%Width%,%Height%•••
+2•C•Magnify Down•send #{NumpadSub}•$^WheelDown•Ctrl + WheelDown•
+2•C•Magnify Up•send #{NumpadAdd}•$^WheelUp•Ctrl + WheelUp•
+2•C•Hide Other Windows•SetWinDelay,0¶If WinNotExist,ahk_id %id%¶  WinRestore,A¶WinGet,id,ID,A¶WinGet,style,Style,ahk_id %id%¶If (style & 0x20000)¶{¶  WinGet,winid_,List,,,Program Manager¶  Loop,%winid_% ¶  {¶    StringTrimRight,winid,winid_%A_Index%,0¶    If id=%winid%¶      Continue¶    WinGet,style,Style,ahk_id %winid%¶    If (style & 0x20000)¶    {¶     WinGet,state,MinMax,ahk_id %winid%,¶     If state=-1¶	Continue¶     WinGetClass,class,ahk_id %winid%¶     If class=Shell_TrayWnd¶	Continue¶     IfWinExist,ahk_id %winid%¶	WinMinimize,ahk_id %winid%¶    }¶  }¶}•••
+2•C•Hide Other Windows Simple•Send,{LWin down}{Home}{LWin up}•••
+2•C•Terminate Application•MyWin := WinExist("A")¶WinGetTitle TempText, ahk_id %MyWin%¶If NOT TempText¶  Return¶If NOT GetKeyState("shift")¶{¶  WinGetTitle TempText, ahk_id %MyWin%¶  MsgBox 49, Terminate!, Terminate "%TempText%"?`nUnsaved data will be lost.¶  IfMsgBox Cancel¶    Return¶}¶WinGet MyPID, PID, ahk_id %MyWin%¶Process, Close, %MyPID%•••
+2•C•Window Always on Top +•Winset,AlwaysOnTop,,A¶WinGetTitle, Name, A¶If (SubStr(Name, 1, 1) = "+")¶ Name:=Name := SubStr(Name, 3)¶else¶ Name:="+ " . Name ;chr(134)¶WinSetTitle, A, , %Name%•Insert•Insert•
+2•C•Shut Down Menu•SplashImage, , MC01, (S) Shutdown`n(R) Restart`n(L) Log Off`n(H) Hibernate`n(P) Power Saving Mode`n`nPress ESC to cancel., Press A Key:, Shutdown?, Courier New¶Input Temp, L1¶SplashImage, Off¶If (Temp="S")¶  ShutDown 8¶Else If (Temp="R")¶  ShutDown 2¶Else If (Temp="L")¶  ShutDown 0¶Else If (Temp="H")¶  DllCall("PowrProf\SetSuspendState", "int", 1, "int", 0, "int", 0)¶Else If (Temp="P")¶  DllCall("PowrProf\SetSuspendState", "int", 0, "int", 0, "int", 0)•!X•Alt + X•
+2•C•Move Mouse with Arrow Keys•toggle33:=!toggle33¶Hotkey, RControl & Left, MLeft¶Hotkey, RControl & Right, MRight¶Hotkey, RControl & Up, MUp¶Hotkey, RControl & Down, MDown¶if toggle33¶{¶	Msgbox,,,Mouse control ON`nRight Ctrl + Arrow keys,1¶	Hotkey, RControl & Left, on¶	Hotkey, RControl & Right, on¶	Hotkey, RControl & Up, on¶	Hotkey, RControl & Down, on¶}¶else  ¶{¶	Msgbox,,, Mouse control OFF,1¶	Hotkey, RControl & Left, off¶	Hotkey, RControl & Right, off¶	Hotkey, RControl & Up, off¶	Hotkey, RControl & Down, off¶}¶Return¶¶MLeft:¶MouseMove, -1, 0, 0, R¶Return¶MRight:¶MouseMove, 1, 0, 0, R¶Return¶MUp:¶MouseMove, 0, -1, 0, R¶Return¶MDown:¶MouseMove, 0, 1, 0, R¶Return•••
+2•C•Make Window Transparent•togg34:=!togg34¶if togg34¶ WinSet, Transparent, 190 , A   ;transparency¶else¶ WinSet, Transparent, OFF , A•••
+2•C•Window to Left Half of the Screen•w:=A_ScreenWidth/2¶h:=A_ScreenHeight-40¶WinMove,A,,0,0,%w%,%h%•••
+2•C•Window to Right Half of the Screen•w:=A_ScreenWidth/2¶h:=A_ScreenHeight-40¶WinMove,A,,%w%,0,%w%,%h%•••
+2•C•Hide/Show Taskbar•If (TaskbarHide := !TaskbarHide)¶  WinHide ahk_class Shell_TrayWnd¶Else¶  WinShow ahk_class Shell_TrayWnd•••
+2•C•Hide/Show Window Title Bar Display•WinSet, Style, ^0xC00000, A •••
+2•C•Cascade Windows•DllCall( "CascadeWindows", uInt,0, Int,4, Int,0, Int,0, Int,0 )•••
+2•C•Zoom Out with a Mouse•Send {lwin down}{NumpadSub}{lwin up} •#WheelDown•Win + WheelDown•
+2•C•Zoom In with a Mouse•Send {LWin down}{NumpadAdd}{LWin up} •#WheelUp•Win + WheelUp•
+2•C•Decrease Window Transparency•DetectHiddenWindows, on¶WinGet, curtrans, Transparent, A¶if ! curtrans¶  curtrans = 255¶newtrans := curtrans - 8¶if newtrans > 0¶  WinSet, Transparent, %newtrans%, A•••
+2•C•Increase Window Transparency•DetectHiddenWindows, on¶WinGet, curtrans, Transparent, A¶if ! curtrans¶  curtrans = 255¶newtrans := curtrans + 8¶if newtrans > 0¶{¶  WinSet, Transparent, %newtrans%, A¶}¶else¶{¶  WinSet, Transparent, OFF, A¶  WinSet, Transparent, 255, A¶}•••
+2•C•Brightness Up•V:=3¶#MaxHotkeysPerInterval 10000¶VarSetCapacity(GR,1536,0)¶DllCall("GetDeviceGammaRamp", UInt,hDC := DllCall("GetDC", UInt,0), UInt,&GR)¶Current:=NumGet(GR, 2, "UShort") - 128, DllCall("ReleaseDC", UInt,0, UInt,hDC)¶Br:=(Br := Current + V) > 255 ? 255 : Br < 0 ? 0 : Br¶¶Loop, % VarSetCapacity(GR,1536)/6¶NumPut((n := (Br+128)*(A_Index-1)) > 65535 ? 65535 : n, GR, 2*(A_Index-1), "UShort")¶DllCall("RtlMoveMemory", UInt,&GR+512, UInt,&GR, UInt,512)¶DllCall("RtlMoveMemory", UInt,&GR+1024, UInt,&GR, UInt,512)¶DllCall("SetDeviceGammaRamp", UInt,hDC := DllCall("GetDC", UInt,0), UInt,&GR)¶, DllCall("ReleaseDC", UInt,0, UInt,hDC)•^WheelUp•Ctrl + WheelUp•
+2•C•Brightness Down•V:=-3¶#MaxHotkeysPerInterval 10000¶VarSetCapacity(GR,1536,0)¶DllCall("GetDeviceGammaRamp", UInt,hDC := DllCall("GetDC", UInt,0), UInt,&GR)¶Current:=NumGet(GR, 2, "UShort") - 128, DllCall("ReleaseDC", UInt,0, UInt,hDC)¶Br:=(Br := Current + V) > 255 ? 255 : Br < 0 ? 0 : Br¶¶Loop, % VarSetCapacity(GR,1536)/6¶NumPut((n := (Br+128)*(A_Index-1)) > 65535 ? 65535 : n, GR, 2*(A_Index-1), "UShort")¶DllCall("RtlMoveMemory", UInt,&GR+512, UInt,&GR, UInt,512)¶DllCall("RtlMoveMemory", UInt,&GR+1024, UInt,&GR, UInt,512)¶DllCall("SetDeviceGammaRamp", UInt,hDC := DllCall("GetDC", UInt,0), UInt,&GR)¶, DllCall("ReleaseDC", UInt,0, UInt,hDC)•^WheelDown•Ctrl + WheelDown•
+2•C•Brightness Reset•Br=128  ;0-255, 128=normal¶¶Loop, % VarSetCapacity(GR,1536)/6¶NumPut((n := (Br+128)*(A_Index-1)) > 65535 ? 65535 : n, GR, 2*(A_Index-1), "UShort")¶DllCall("RtlMoveMemory", UInt,&GR+512, UInt,&GR, UInt,512)¶DllCall("RtlMoveMemory", UInt,&GR+1024, UInt,&GR, UInt,512)¶DllCall("SetDeviceGammaRamp", UInt,hDC := DllCall("GetDC", UInt,0), UInt,&GR)¶, DllCall("ReleaseDC", UInt,0, UInt,hDC)•••
+2•C•Mouse Down•MouseMove, 0, 1, 0, R•••
+2•C•Mouse Up•MouseMove, 0, -1, 0, R•••
+2•C•Mouse Right•MouseMove, 1, 0, 0, R•••
+2•C•Mouse Left•MouseMove, -1, 0, 0, R•••
+3•C•Recent Files/Folders Menu•if A_OSVersion in WIN_98,WIN_ME,WIN_XP ¶{¶  EnvGet, Path, UserProfile¶  fd = %Path%\Recent¶}¶else¶  fd=%A_AppData%\Microsoft\Windows\Recent¶Menu, RM, UseErrorLevel¶Menu, RM, DeleteAll¶Menu, RM, Delete¶FileList =¶Loop, %fd%\*.*, 0, 0¶    FileList = %FileList%%A_LoopFileTimeModified%`t%A_LoopFileFullPath%`n¶Sort, FileList, R¶Loop, parse, FileList, `n¶{¶   if (A_index=16)¶      break¶   if A_LoopField =¶      continue¶   StringSplit, FileItem, A_LoopField, %A_Tab%¶   OutTarget= %FileItem2%¶   Splitpath, OutTarget,name,,Ext¶   FileGetShortcut, %OutTarget%, FileTo¶   FileGetAttrib, Attributes, %FileTo%¶   SplitPath, FileTo,name,,Ext¶   If InStr(Attributes, "D" )¶   {¶      IconFile:="C:\Windows\system32\imageres.dll"¶      icc:=4¶   }¶   else¶   {¶      IconFile:=AssocQueryApp(Ext)¶      icc:=2¶   }¶   Menu, RM, Add, %name%, LabelR¶   Menu, RM, Icon, %name%, %IconFile%, %icc%, 16¶   if errorlevel¶      Menu, RM, Icon, %name%, %IconFile%, 1, 16¶   if errorlevel¶      Menu, RM, Icon, %name%, C:\Windows\system32\imageres.dll, 12, 16¶}¶Menu, RM, show¶Return¶¶LabelR:¶run, %fd%\%A_ThisMenuItem%.lnk,,useerrorlevel¶return¶¶AssocQueryApp(ext) {¶	RegRead, type, HKCU, Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.%Ext%, Application¶	If !ErrorLevel {¶		RegRead, act, HKCU, Software\Classes\Applications\%type%\shell¶		If ErrorLevel¶			act = open¶		RegRead, cmd, HKCU, Software\Classes\Applications\%type%\shell\%act%\command¶    }¶	Else {¶		RegRead, type, HKCR, .%Ext%¶		RegRead, act , HKCR, %type%\shell¶		If ErrorLevel¶			act = open¶        RegRead, cmd , HKCR, %type%\shell\%act%\command¶        EXEPosition := InStr(cmd,".exe",false,0,1)¶        exepath := Trim(SubStr(cmd,1,EXEPosition+3),"""")¶    }¶    Return, exepath¶}•••
+3•C•Google AutoCorrect Selection•clipback := ClipboardAll¶clipboard=¶Send ^{vk43} ;Ctrl C¶ClipWait, 0¶UrlDownloadToFile % "https://www.google.com/search?q=" . clipboard, temp¶FileRead, contents, temp¶FileDelete temp¶if (RegExMatch(contents, "(Showing results for|Did you mean:)</span>.*?>(.*?)</a>", match)) {¶   StringReplace, clipboard, match2, <b><i>,, All¶   StringReplace, clipboard, clipboard, </i></b>,, All¶}¶Send ^{vk56} ;Ctrl V¶Sleep 500¶clipboard := clipback•••
+3•C•Google Search Text•Send, ^{vk43} ;Ctrl C¶Sleep 50¶Run, http://www.google.com/search?q=%clipboard%•••
+3•C•Fast Google Search•InputBox, x, Google Search,,,250,103,,,,15¶If !ErrorLevel¶ Run, www.google.com/search?hl=&q=%x%•••
+3•C•Google Feel Lucky Text•Send, ^{vk43} ;Ctrl C¶Sleep 50¶Run http://google.com/search?btnI=I`%27m+Feeling+Lucky&q=%clipboard%•••
+3•C•New Mail•Run mailto:•••
+3•C•Search Wikipedia•Send, ^{vk43} ;Ctrl C ¶Sleep 50¶Run, http://en.wikipedia.org/wiki/Special:Search?search=%Clipboard%•••
+3•C•Search Text in Word Dictionary•SaveClip := ClipboardAll¶Clipboard := ""¶Send ^{vk43} ;Ctrl C¶ClipWait 1¶Word := RegExReplace(Clipboard, "[^\w\s]")¶Clipboard := SaveClip¶SaveClip := ""¶Run, http://dictionary.reference.com/browse/%Word%?s=t•••
+3•C•Send Automatic Email•to:="to@email.address"¶cc:="cc@email.address,cc@email.address"¶bcc:=" "¶subject:="Hello"¶body:="Best regards,%0A%0AJohn"¶¶Run mailto:%To%?cc=%cc%&bcc=%bcc%&subject=%Subject%&body=%body%•••
+3•C•Outlook 2010 Reply Email to Sender•Send +{Tab 5}+^{Left}¶Gosub GetTextO¶if (StrLen(MyText)=0)¶{¶  Send +{Tab 1}+^{Left}¶  Gosub GetTextO¶}¶From:=MyText¶If !RegExMatch(From, "(\w+)\s\w+", m)¶ if !RegExMatch(From, "\w+`,\s(\w+)", m)¶  if !RegExMatch(From, "(\w+)\.\w+@", m)¶   m1:=From¶StringUpper m1, m1, T¶Send, ^{vk52} ;Ctrl r¶Sleep, 100¶Send, Dear %m1%,{Enter 2}thank you for your mail. {Enter 2}Best regards,{Enter 2}John{Up 4}{End}¶Return¶¶GetTextO:¶SavedClip := ClipboardAll¶Clipboard =¶Send ^{vk43} ;Ctrl C¶ClipWait 0.5¶If ERRORLEVEL¶{¶  Clipboard := SavedClip¶  MyText =¶  Return¶}¶MyText := Clipboard¶Clipboard := SavedClip¶Return•••ahk_class rctrl_renwnd32
+3•C•Show Tray Clock•WM_CHOOSEFONT_SETFLAGS=0x0466¶SendMessage, WM_CHOOSEFONT_SETFLAGS, 1,, TrayClockWClass1, ahk_class Shell_TrayWnd•••
+3•C•StopWatch Simple•if WinExist("StopWatch") {¶ Gui, 11:Destroy¶SetTimer, 11Count, Off¶}¶else {¶11DateTimeStamp=20061103000000¶Gui, 11: -SysMenu +ToolWindow +AlwaysOnTop¶Gui, 11:Margin, 5, 5¶Gui, 11:Font, s20¶Gui, 11:Add, Text, w154 h50 0x201 v11Time  +Border, 00:00:00¶Gui, 11:Font¶Gui, 11:Add, Button, y+5 w50 h23 v11StartStop g11StartStop, Start¶Gui, 11:Add, Button, x+2 wp hp v11PauseResume g11PauseResume, Pause¶Gui, 11:Add, Button, x+2 wp hp v11Reset g11Reset, Reset¶Gui, 11:Show, x50 y50, StopWatch¶}¶return¶¶11StartStop:¶GuiControlGet, 11StartStop¶If ( 11StartStop = "Start" ) ¶{¶ GuiControl, 11:, 11StartStop, Stop¶ SetTimer, 11Count,990¶}¶Else¶{¶ GuiControl, 11:, 11StartStop, Start¶ SetTimer, 11Count, Off¶ GuiControl, 11:, 11PauseResume, Pause¶ 11DateTimeStamp = 20061103000000¶} ¶Return¶ ¶11PauseResume:¶GuiControlGet, 11StartStop¶If ( 11StartStop = "Start" )¶ Return¶GuiControlGet, 11PauseResume¶If ( 11PauseResume = "Pause" ) ¶{¶ GuiControl, 11:, 11PauseResume, Resume¶ SetTimer, 11Count, OFF¶}¶Else¶{¶ GuiControl, 11:, 11PauseResume, Pause¶ SetTimer, 11Count, 990¶} ¶Return¶¶11Reset:¶GuiControl, 11:, 11Time, 00:00:00¶11DateTimeStamp = 20061103000000¶Return¶¶11Count:¶11DateTimeStamp += 1, Seconds¶FormatTime, nTime, %11DateTimeStamp%, HH:mm:ss¶GuiControlGet, 11Time¶If ( 11Time <> nTime )            ¶ GuiControl, 11:, 11Time, %nTime% ¶Return•••
+3•C•StopWatch Timer•if WinExist("Timer") {¶ Gui, 12:Destroy¶ SetTimer, 12Count, Off¶}¶else {¶12DateTimeStamp=20061203000000¶Gui, 12:  +AlwaysOnTop¶Gui, 12:Font, s14¶Gui, 12:Add, Text,, Start Time:¶Gui, 12:Add, Text, xp+100 h20 yp  v12Beg , 00:00:00¶Gui, 12:Add, Text, xm, Duration:¶Gui, 12:Add, Text, xp+100 h20 yp  v12Time, 00:00:00¶Gui, 12:Add, Text, xm, Stop Time:¶Gui, 12:Add, Text, xp+100 h20 yp  v12End , 00:00:00¶Gui, 12:Font¶Gui, 12:Add, Button, xm-2 y+15 w55 h23 v12StartStop g12StartStop, Start¶Gui, 12:Add, Button, x+2 wp hp v12PauseResume g12PauseResume, Pause¶Gui, 12:Add, Button, x+2 wp hp v12Reset g12Reset, Reset¶Gui, 12:Show, x200 y200, Timer¶}¶return¶¶12StartStop:¶GuiControlGet, 12StartStop¶If ( 12StartStop = "Start" ) ¶{¶ GuiControl, 12:, 12StartStop, Stop¶ 12Beg:=A_Hour . ":" . A_Min . ":" . A_Sec¶ GuiControl, 12:, 12Beg, %12Beg%¶ GuiControl, 12:, 12End, 00:00:00¶ SetTimer, 12Count,990¶}¶Else¶{¶ GuiControl, 12:, 12StartStop, Start¶ 12End:=A_Hour . ":" . A_Min . ":" . A_Sec¶ GuiControl, 12:, 12End, %12End%¶ SetTimer, 12Count, Off¶ GuiControl, 12:, 12PauseResume, Pause¶ 12DateTimeStamp = 20061203000000¶} ¶Return¶ ¶12PauseResume:¶GuiControlGet, 12StartStop¶If ( 12StartStop = "Start" )¶  Return¶GuiControlGet, 12PauseResume¶If ( 12PauseResume = "Pause" ) ¶{¶ GuiControl, 12:, 12PauseResume, Resume¶ SetTimer, 12Count, OFF¶}¶Else¶{¶ GuiControl, 12:, 12PauseResume, Pause¶ SetTimer, 12Count, 990¶} ¶Return¶¶12Reset:¶GuiControl, 12:, 12Time, 00:00:00¶12Beg:=A_Hour . ":" . A_Min . ":" . A_Sec¶GuiControl, 12:, 12Beg, %12Beg%¶12DateTimeStamp = 20061203000000¶GuiControl, 12:, 12End, 00:00:00¶Return¶¶12Count:¶12DateTimeStamp += 1, Seconds¶FormatTime, nTime, %12DateTimeStamp%, HH:mm:ss¶GuiControlGet, 12Time¶If ( 12Time <> nTime )            ¶  GuiControl, 12:, 12Time, %nTime% ¶Return¶¶12GuiClose:¶Gui, 12:Destroy¶SetTimer, 12Count, Off¶return•••
+3•C•Countdown Seconds ToolTip•InputBox, sec,Countdown, Countdown Seconds:,,160,123,,,,15¶If ErrorLevel¶ Return¶¶SetTimer, RemoveToolTip, 1000 ¶¶RemoveToolTip: ¶ToolTip, % (Sec--<1) ? "" : FormatSeconds(sec) " seconds remaining."¶If (Sec<0) {¶ SetTimer, RemoveToolTip, Off¶ Msgbox Countdown completed.¶}¶return ¶¶FormatSeconds(x) ¶{ ¶Out:=SubStr("0" . Mod(x, 60),-1),x:=Floor(x/60)¶Return x ":" Out¶}•••
+3•C•Countdown Timer Big•if WinExist("MyCountdown") {¶ Gui, 19:Destroy¶ SetTimer, ShowTimerCD, Off¶}¶else {¶¶InputBox, secsLeft , Countdown, Countdown Seconds:,,160,123,,,,15¶If ErrorLevel¶ Return¶Gui 19:+LastFound +AlwaysOnTop -Caption +ToolWindow¶Gui 19:Color, EEAA99¶Gui 19:Font, s228¶Gui 19:Margin, 0, 0¶Gui 19:Add, Text, w335 h290 yp-50 Vdisp Cred Right¶WinSet TransColor, EEAA99¶Gui 19:Show, NoActivate, MyCountdown¶¶SetTimer, ShowTimerCD, 1000¶Gosub ShowTimerCD¶Return¶}¶¶ShowTimerCD:¶secsLeft--¶IfEqual, secsLeft, 0¶{¶  Loop 4¶  {¶  GuiControl, 19:Text, disp, 0¶  Sleep 400  ¶  GuiControl, 19:Text, disp,¶  Sleep 400¶  }¶  SetTimer ShowTimerCD, Off¶  ;Sleep 3000¶  Gui, 19:Destroy¶}¶Else¶  GuiControl, 19:Text, disp, %secsLeft%¶Return•••
+3•C•Show/Hide Handy Notes•if WinExist("Notes") {¶ Gui, 21:Submit¶ Gui, 21:Destroy¶}¶else { ¶Gui, 21:+ToolWindow +AlwaysOnTop -sysmenu¶Gui, 21:Font, s11 consolas¶Gui, 21:Add, Edit, w400 r20 WantTab vNotes¶Gui, 21:Add, Button, gNSave, Save¶h:=A_ScreenWidth-500¶Gui, 21:Show, x%h% y50, Notes¶GuiControl,21:, Notes, %Notes%¶}¶Return¶NSave:¶Gui, 21:Submit¶Gui, 21:Destroy¶FileSelectFile, file, S24, notes.txt, Documents (*.txt)¶if ErrorLevel = 0¶{¶ if file != ""¶ {¶  FileDelete, %file%¶  FileAppend, %Notes%, %file%¶ }¶}¶Return•••
+3•C•Show/Hide Clock on Top•if WinExist("Clock") {¶ Gui, 24:Destroy¶ SetTimer, UC, Off¶}¶else { ¶Gui, 24:+ToolWindow +AlwaysOnTop -sysmenu ;-caption¶Gui, 24:Color, black¶Gui, 24:Font, s16 cwhite¶Gui, 24:Add, Text, W100 H20 +Center vText¶SetTimer, UC, 1000¶Gosub, UC¶h:=A_ScreenWidth-200¶Gui, 24:Show, x%h% y50, Clock¶}¶Return¶UC:¶GuiControl,24:, Text, %A_Hour%:%A_Min%:%A_Sec%¶Return•••
+3•C•Weather Sticker•;get the link at www.wunderground.com¶link:="http://weathersticker.wunderground.com/weathersticker/cgi-bin/banner/ban/wxBanner?bannertype=wu_clean2day_cond&airportcode=KSFO&ForcedCity=San Francisco&ForcedState=CA&zip=94114&language=EN"¶if WinActive("Weather")¶ Gui, Destroy¶else { ¶ Gui, margin, 0, 0¶ URLDownloadToFile, %link%, weather.jpg¶ Sleep 200¶ Gui, add, Picture, , weather.jpg¶ Gui +Caption +AlwaysOnTop ¶ w:=A_ScreenWidth-350¶ h:=A_ScreenHeight-200¶ Gui, show, x%w% y%h%, Weather¶ FileDelete, weather.jpg¶}•••
+3•C•Change Caps Text Utility•Menu Case, Add¶Menu Case, DeleteAll¶Menu Case, Add, &UPPERCASE, CCase¶Menu Case, Add, &lowercase, CCase¶Menu Case, Add, &Title Case, CCase¶Menu Case, Add, &Sentence case, CCase¶Menu Case, Add¶Menu Case, Add, &Fix Linebreaks, CCase¶Menu Case, Add, &Reverse, CCase¶Menu Case, Add¶Menu Case, Add, &Remove Spaces, CCase¶¶GetText(Txt)¶If NOT ERRORLEVEL¶  Menu Case, Show¶Return¶¶CCase:¶p:=A_ThisMenuItemPos¶If (p=1)¶  StringUpper, Txt, Txt¶Else If (p=2)¶  StringLower, Txt, Txt¶Else If (p=3)¶  StringLower, Txt, Txt, T¶Else If (p=4)¶{¶  StringLower, Txt, Txt¶  Txt := RegExReplace(Txt, "((?:^|[.!?]\s+)[a-z])", "$u1")¶}¶Else If (p=6)¶{¶  Txt := RegExReplace(Txt, "\R", "`r`n")¶}¶Else If (p=7)¶{¶  Temp2 =¶  StringReplace, Txt, Txt, `r`n, % Chr(29), All¶  Loop Parse, Txt¶    Temp2 := A_LoopField . Temp2¶  StringReplace, Txt, Temp2, % Chr(29), `r`n, All¶}¶Else If (p=9)¶{¶  Loop ¶  { ¶  StringReplace, Txt, Txt, %A_Space%%A_Space%, %A_Space%, UseErrorLevel ¶  if ErrorLevel = 0  ¶    break ¶  }¶}¶PutText(Txt)¶Return¶¶GetText(ByRef MyText = "")¶{¶SavedClip := ClipboardAll¶Clipboard =¶Send ^{vk43} ;Ctrl C¶ClipWait 0.5¶If ERRORLEVEL¶{¶  Clipboard := SavedClip¶  MyText =¶  Return¶}¶MyText := Clipboard¶Clipboard := SavedClip¶Return MyText¶}¶¶PutText(MyText)¶{¶SavedClip := ClipboardAll ¶Clipboard =¶Sleep 20¶Clipboard := MyText¶Send ^{vk56} ;Ctrl V¶Sleep 100¶Clipboard := SavedClip¶Return¶}•^CapsLock•Ctrl + CapsLock•
+3•C•Translate Webpage•Send !{vk44} ;!d¶Sleep 200¶SavedClip := ClipboardAll¶Clipboard =¶Send ^{vk43} ;Ctrl C¶ClipWait 0.5¶MyText := Clipboard¶Run, http://translate.google.com/¶Sleep 700¶Clipboard =¶Sleep 20¶Clipboard := MyText¶Send ^{vk56} ;Ctrl V¶Sleep 100¶Clipboard := SavedClip¶ClipWait 1¶Send {Enter}•••
+3•C•Searcher Utility•clipboard=¶send ^{vk43} ;Ctrl C¶clipwait,1¶¶DTMENU:¶Menu,convert,Add¶Menu,convert,Delete¶Menu,convert,Add,&Dictionary,dtdiction¶Menu,convert,Add,&Thesaurus,dtthesaur¶Menu,convert,Add,&Google Translate,dttransla¶menu,convert,add, &Google Search,dtGSearch¶Menu,convert,Show¶Return¶¶dtdiction:¶Traytip, MyLittleHelper, Dictionary search¶run, http://dictionary.reference.com/browse/%clipboard%¶return¶¶dtthesaur:¶Traytip, MyLittleHelper, Thesaurus search¶run, http://thesaurus.com/browse/%clipboard%¶return¶¶dttransla:¶traytip, MyLittleHelper, Google Translate`n%clipboard%… ¶run, http://translate.google.com/#auto|en|%clipboard%¶sleep, 3000¶return¶¶dtGSearch:¶traytip, MyLittleHelper, Google Seaarch`n%clipboard%…¶run, https://www.google.com/search?q=%clipboard%¶sleep, 2000¶return•••
+3•C•Screen to Paint•clipsave=%clipboard%¶Send, #{PRINTSCREEN}¶ClipWait 1¶Run, mspaint.exe¶WinWaitActive ahk_class MSPaintApp¶Send, ^{vk56} ;Ctrl V¶ClipWait 1¶clipboard=%clipsave%•••
+3•C•Window Screen to Paint•clipsave=%clipboard%¶Send, !{PRINTSCREEN}¶ClipWait 1¶Run, mspaint.exe¶WinWaitActive ahk_class MSPaintApp¶Send, ^{vk56} ;Ctrl V¶ClipWait 1¶clipboard=%clipsave%•••
+3•C•Get Information on All Disk Drives•m:= ""¶DriveGet sDriveList, LIST¶loop PARSE, sDriveList¶{¶ DriveGet, sLabel, LABEL, %A_LoopField%:¶ DriveGet, sType, TYPE, %A_LoopField%:¶ DriveGet, cap, capacity, %A_LoopField%:¶ DrivespaceFree, free, %A_LoopField%:¶ fp:=(round((Cap-free)/Cap*100))¶ m = %m%%A_LoopField%:`t%sType%`t%sLabel%`tUsed: %fp%`%`n¶}¶MsgBox %m%•••
+3•C•Get Drive Information•FileSelectFolder, folder,  ::{20d04fe0-3aea-1069-a2d8-08002b30309d} , 3, Pick a drive to analyze:¶if folder =¶  return¶DriveGet, list, list¶DriveGet, cap, capacity, %folder%¶DrivespaceFree, free, %folder%¶DriveGet, fs, fs, %folder%¶DriveGet, label, label, %folder%¶DriveGet, serial, serial, %folder%¶DriveGet, type, type, %folder%¶DriveGet, status, status, %folder%¶fp:=(round((Cap-free)/Cap*100))¶MsgBox All Drives: %list%`nSelected Drive: %folder%`nDrive Type: %type%`nStatus: %status%`nCapacity: %cap% M`nFree Space: %free% M`nUsed: %fp% `%`nFilesystem: %fs%`nVolume Label: %label%`nSerial Number: %serial%•••
+4•C•Volume Up•Send {Volume_Up 3}•^WheelUp•Ctrl + WheelUp•
+4•C•Volume Down•Send {Volume_Down 3}•^WheelDown•Ctrl + WheelDown•
+4•C•Mute Sound•Send {Volume_Mute}•••
+4•C•Mute Sound with Notification•Send {Volume_Mute}¶SoundPlay, %A_WinDir%\Media\notify.wav•••
+4•C•Mute for x seconds•Send {Volume_Mute}¶Sleep, 5000  ;5 seconds, change to your needs¶Send {Volume_Mute}•••
+4•C•Change Default Audio Device•toggle32:=!toggle32¶Run, mmsys.cpl¶WinWaitActive,Sound¶if toggle32¶ ControlSend,SysListView321,{Down}¶else¶ ControlSend,SysListView321,{Down 2}¶Sleep, 50¶ControlClick,Button2¶ControlClick,OK•••
+4•C•Select previous track in media player•Send {Media_Prev}•NumpadSub•NumpadSub•
+4•C•Select next track in media player•Send {Media_Next}•NumpadAdd•NumpadAdd•
+4•C•Play/pause media player•Send {Media_Play_Pause}•NumpadMult•NumpadMult•
+4•C•Play Any Song from Anywhere•Where = D:\My Documents\Music\mp3  ;your location¶¶InputBox, UserInput, Search,,, 170,105,,,,, Enter song name¶ifequal,userinput,, return¶endkey=%errorlevel%¶Loop, %Where%\*.*, 1, 1 ¶{ ¶  mp3 = %A_LoopFileFullPath% ¶  Found = Yes ¶  Loop, Parse, UserInput, %a_space% ¶    IfNotInString, mp3, %A_LoopField%, SetEnv, Found, No ¶  IfEqual, Found, Yes ¶  { ¶    Ifnotinstring, mp3,.mp3, Ifinstring, mp3,., break¶    Run, wmplayer.exe "%mp3%" ¶    Found = No ¶    break ¶  } ¶} •!F•Alt + F•
+5•C•Auto-Clicker CapsLock•if getkeystate("capslock", "T")¶ settimer, playmygame, 300 ¶else¶ settimer, playmygame, Off ¶return¶¶playmygame:¶SendInput, {Click}¶Return•~CapsLock•CapsLock•
+5•C•Fire x Times•Loop,3  ;No of shots¶{¶Send, Lbutton¶Sleep 100¶}•••
+5•C•Crouch Fire x Times•Send, x  ;Crouch Key¶Loop, 3  ;No of shots¶{¶Send, Lbutton¶Sleep 100¶}¶Send, x•••
+5•C•Improve Fire Accuracy - Anti-Recoil•MouseGetPos, xp, yp¶Send, Lbutton¶Mousemove, %xp%,%yp%•••
+5•C•Fire x Times Improved Accuracy•Loop, 5  ;No of shots¶{¶MouseGetPos, xp, yp¶Send, Lbutton¶Sleep 200¶Mousemove, %xp%,%yp%¶Sleep,100¶}•••
+5•C•Jump x Times and Crouch•Loop,3  ;No of hops¶{¶Send {Space}¶Sleep 500¶Send X  ;Crouch key¶}•••
+5•C•Get Pixel Color•MouseGetPos, MouseX, MouseY¶PixelGetColor, color, %MouseX%, %MouseY%¶MsgBox The color at the current cursor position is %color%.•••
+5•C•Auto Aim Shot Pixel Color•PixelSearch, px, py,0,%A_ScreenHeight%, %A_ScreenWidht%,0, 0x9d6346, 3, Fast  ;change to pixel color¶Mousemove, %px%,%py%¶Send Lbutton•••
+5•C•Auto Fire LButton•Loop¶{¶ GetKeyState, v, LButton, P¶ If v = U¶  Break¶ Send {LButton}¶ Sleep 20¶} •~*$LButton•LButton•
+5•C•Auto-Clicker•SetTimer, Spam, % (i:=!i) ? "100" : "Off"¶Return¶Spam:¶SendInput, {Click}¶Return•••
+5•C•Auto Fire Hold•While GetKeyState("LButton","p")  ;change Key¶{¶ Send {Click}¶ Sleep 50  ;change rate¶}•~*$LButton•LButton•
+5•C•Auto Fire Hold delay 0.5s•KeyWait LButton, T0.5  ;waits 0.5 sec to fire¶ If ErrorLevel¶  While GetKeyState("LButton","p")¶  {¶   Send {Click}¶   sleep 50¶  }¶ else¶  Send {Click}•~*$LButton•LButton•
+5•C•Auto Fire Toggle•Toggle33 := !Toggle33¶ While Toggle33¶ {¶  Send {Click}¶  sleep 100¶ }•••
+5•C•Press Key Periodically•SetTimer, PressTheKey, 1800000  ;change (msec)¶Return¶PressTheKey:¶Send, {Space}  ;change key to be pressed¶Return•••
+6•R•Add Hardware Wizard•hdwwiz.cpl•••
+6•R•Add/Remove Programs•appwiz.cpl•••
+6•R•Administrative Tools•control admintools•••
+6•R•Certificate Manager•certmgr.msc•••
+6•R•Character Map•charmap•••
+6•R•Check Disk Utility•cmd /k chkdsk•••
+6•R•Component Services•dcomcnfg•••
+6•R•Computer Management•compmgmt.msc•••
+6•R•Control Panel•control•••
+6•R•Date and Time Properties•timedate.cpl•••
+6•R•Device Manager•devmgmt.msc•••
+6•R•Direct X Troubleshooter•dxdiag•••
+6•R•Disk Cleanup Utility•cleanmgr•••
+6•R•Disk Management•diskmgmt.msc•••
+6•R•Display Properties•desk.cpl•••
+6•R•Event Viewer•eventvwr.msc•••
+6•R•Fonts•control fonts•••
+6•R•Fonts Folder•fonts•••
+6•R•Game Controllers•joy.cpl•••
+6•R•Group Policy Editor•gpedit.msc•••
+6•R•Internet Properties•inetcpl.cpl•••
+6•R•Keyboard Properties•control keyboard•••
+6•R•Local Users and Groups•lusrmgr.msc•••
+6•R•Mouse Properties•main.cpl•••
+6•R•Performance Monitor•perfmon.msc•••
+6•R•Power Configuration•powercfg.cpl•••
+6•R•Printers and Faxes•control printers•••
+6•R•Private Character Editor•eudcedit•••
+6•R•Regional Settings•intl.cpl•••
+6•R•Scheduled Tasks•control schedtasks•••
+6•R•Security Center•wscui.cpl•••
+6•R•Services•services.msc•••
+6•R•Shared Folders•fsmgmt.msc•••
+6•R•Sounds and Audio•mmsys.cpl•••
+6•R•SQL Client Configuration•cliconfg•••
+6•R•System Information•msinfo32•••
+6•R•System Properties•sysdm.cpl•••
+6•R•Utility Manager•utilman•••
+6•R•User Accounts•control userpasswords2•••
+6•R•Windows Firewall•firewall.cpl•••
+6•R•Windows System Security Tool•syskey•••
+6•R•Safely Remove Hardware Dialog Box•Rundll32 Shell32.dll,Control_RunDLL HotPlug.dll•••
+6•R•Windows About•RunDll32.exe SHELL32.DLL,ShellAboutW•••
+7•R•Add New Programs Folder•Shell:AddNewProgramsFolder•••
+7•R•AppData•Shell:AppData•••
+7•R•Cache•Shell:Cache•••
+7•R•CD Burning•Shell:CD Burning•••
+7•R•My Computer•shell:MyComputerFolder•••
+7•R•Recycle Bin•shell:RecycleBinFolder•••
+7•R•Administrative Tools Folder•shell:Administrative Tools•••
+7•R•Change/Remove Programs•shell:ChangeRemoveProgramsFolder•••
+7•R•Network•shell:NetworkPlacesFolder•••
+7•R•User Profiles•shell:UserProfiles•••
+7•R•Profile Folder•shell:Profile•••
+7•R•Public Folder•shell:Public•••
+7•R•Common Administrative Tools•Shell:Common Administrative Tools•••
+7•R•Common AppData•Shell:Common AppData•••
+7•R•Common Desktop•Shell:Common Desktop•••
+7•R•Common Documents•Shell:Common Documents•••
+7•R•Common Programs•Shell:Common Programs•••
+7•R•Common Start Menu•Shell:Common Start Menu•••
+7•R•Common Startup•Shell:Common Startup•••
+7•R•Common Templates•Shell:Common Templates•••
+7•R•Common Downloads•Shell:CommonDownloads•••
+7•R•Common Music•Shell:CommonMusic•••
+7•R•Common Pictures•Shell:CommonPictures•••
+7•R•Common Video•Shell:CommonVideo•••
+7•R•Network Connections•Shell:ConnectionsFolder•••
+7•R•Contacts•Shell:Contacts•••
+7•R•Control Panel Folder•Shell:ControlPanelFolder•••
+7•R•Cookies•Shell:Cookies•••
+7•R•CredentialManager•Shell:CredentialManager•••
+7•R•CryptoKeys•Shell:CryptoKeys•••
+7•R•Default Gadgets•Shell:Default Gadgets•••
+7•R•Desktop•Shell:Desktop•••
+7•R•Downloads•Shell:Downloads•••
+7•R•DpapiKeys•Shell:DpapiKeys•••
+7•R•Favorites•Shell:Favorites•••
+7•R•Fonts•Shell:Fonts•••
+7•R•Gadgets•Shell:Gadgets•••
+7•R•Games•Shell:Games•••
+7•R•History•Shell:History•••
+7•R•Links•Shell:Links•••
+7•R•Local AppData•Shell:Local AppData•••
+7•R•Local AppDataLow•Shell:LocalAppDataLow•••
+7•R•My Music•Shell:My Music•••
+7•R•My Pictures•Shell:My Pictures•••
+7•R•My Video•Shell:My Video•••
+7•R•Printers and Faxes•control printers•••
+7•R•Quick Launch•shell:Quick Launch•••
+8•R•Delete Temporary Internet Files•RunDll32.exe InetCpl.cpl,ClearMyTracksByProcess 9•••
+8•R•Delete Cookies•RunDll32.exe InetCpl.cpl,ClearMyTracksByProcess 2•••
+8•R•Delete History•RunDll32.exe InetCpl.cpl,ClearMyTracksByProcess 1•••
+8•R•Delete Form Data•RunDll32.exe InetCpl.cpl,ClearMyTracksByProcess 16•••
+8•R•Delete Passwords•RunDll32.exe InetCpl.cpl,ClearMyTracksByProcess 32•••
+8•R•Delete All•RunDll32.exe InetCpl.cpl,ClearMyTracksByProcess 256•••
+8•R•Delete All + files and settings stored by Add-ons•RunDll32.exe InetCpl.cpl,ClearMyTracksByProcess 4351•••
+8•R•Display Organize Favorites Dialog•RUNDLL32.EXE shdocvw.dll,DoOrganizeFavDlg•••
+9•R•Hibernate•RunDll32.exe powrprof.dll,SetSuspendState•••
+9•R•Lock Screen•RunDll32.exe user32.dll,LockWorkStation•••
+9•R•Map Network Drive Wizard•Rundll32 Shell32.dll,SHHelpShortcuts_RunDLL Connect•••
+9•R•Logoff Windows•logoff•••
+9•R•Logoff•logoff•shutdown.exe /l••
+9•R•Shutdown Computer•shutdown /s /d p:0:0 /t 0•••
+9•R•Shutdown (Force)•shutdown /p /d p:0:0•••
+9•R•Restart Computer•shutdown /r /d p:0:0 /t 0•••
+9•R•Restart (Force)•shutdown /r /f /d p:0:0 /t 0•••
+9•R•Clear The Clipboard (Vista/7)•cmd /C "echo off | clip"•••
+9•R•Date to the clipboard (Vista/7)•cmd /C Date /t | Clip•••
+9•R•Time to the clipboard (Vista/7)•cmd /C Time /t | Clip•••
+9•R•Turn Aero Transparency Off•rundll32.exe dwmApi #105•••
+9•R•Turn Aero Transparency On•rundll32.exe dwmApi #102•••
+9•R•Troubleshoot Using System Maintenance•msdt.exe -id MaintenanceDiagnostic•••
+10•R•Calculator•calc•••
+10•R•Command Prompt•cmd•••
+10•R•Internet Explorer•iexplore•••
+10•R•Notepad•notepad•••
+10•R•Remote Desktop•mstsc•••
+10•R•Task Manager•taskmgr•••
+10•R•Windows Magnifier•magnify•••
+10•R•Windows Media Player•wmplayer•••
+10•R•Wordpad•write•••
+10•R•Registry Editor•regedit•••
+10•R•On Screen Keyboard•osk•••
+10•R•Paint•mspaint•••
+10•R•Sound Recorder (Vista/7)•soundrecorder•••
+10•R•Snipping Tool•C:\Windows\System32\SnippingTool.exe•••
+10•R•Snipping Tool v1•C:\Windows\Sysnative\SnippingTool.exe•••
+10•R•Snipping Tool v2•SnippingTool•••
+11•R•Tile Windows Horizontally•win_tileh•••
+11•R•Tile Windows Vertically•win_tilev•••
+11•R•Minimize: All Windows•win_min•••
+11•R•Minimize: Undo•win_unmin•••
+11•R•Toggle Desktop•win_togd•••
+11•R•Task Switcher (Vista+ only)•win_tasksw•••
+11•R•Cascade Windows•win_casc•••
+12•R•Action Center•explorer.exe shell:::{BB64F8A7-BEE7-4E1A-AB8D-7D8273F7FDB6}•••
+12•R•Add Network Location•explorer.exe shell:::{D4480A50-BA28-11d1-8E75-00C04FA31A86}•••
+12•R•Administrative Tools•explorer.exe shell:::{D20EA4E1-3957-11d2-A40B-0C5020524153}•••
+12•R•Advanced User Accounts•explorer.exe shell:::{7A9D77BD-5403-11d2-8785-2E0420524153}•••
+12•R•AutoPlay•explorer.exe shell:::{9C60DE1E-E5FC-40f4-A487-460851A8D915}•••
+12•R•Backup and Restore•explorer.exe shell:::{B98A2BEA-7D42-4558-8BD1-832F41BAC6FD}•••
+12•R•Biometric Devices•explorer.exe shell:::{0142e4d0-fb7a-11dc-ba4a-000ffe7ab428}•••
+12•R•BitLocker Drive Encryption•explorer.exe shell:::{D9EF8727-CAC2-4e60-809E-86F80A666C91}•••
+12•R•Bluetooth Devices•explorer.exe shell:::{28803F59-3A75-4058-995F-4EE5503B023C}•••
+12•R•Briefcase•explorer.exe shell:::{85BBD920-42AO-1069-A2E4-08002B30309D}•••
+12•R•Color Management•explorer.exe shell:::{B2C761C6-29BC-4f19-9251-E6195265BAF1}•••
+12•R•Computer•explorer.exe shell:::{20d04fe0-3aea-1069-a2d8-08002b30309d}•••
+12•R•Connect To•explorer.exe shell:::{38A98528-6CBF-4CA9-8DC0-B1E1D10F7B1B}•••
+12•R•Control Panel (Icons view)•explorer.exe shell:::{21EC2020-3AEA-1069-A2DD-08002B30309D}•••
+12•R•Control Panel (All Tasks)•explorer.exe shell:::{ED7BA470-8E54-465E-825C-99712043E01C}•••
+12•R•Control Panel (Category view)•explorer.exe shell:::{26EE0668-A00A-44D7-9371-BEB064C98683}•••
+12•R•Credential Manager•explorer.exe shell:::{1206F5F1-0569-412C-8FEC-3204630DFB70}•••
+12•R•Date and Time•explorer.exe shell:::{E2E7934B-DCE5-43C4-9576-7FE4F75E7480}•••
+12•R•Default Location•explorer.exe shell:::{00C6D95F-329C-409a-81D7-C46C66EA7F33}•••
+12•R•Default Programs•explorer.exe shell:::{17cd9488-1228-4b2f-88ce-4298e93e0966}•••
+12•R•Default Programs•explorer.exe shell:::{E44E5D18-0652-4508-A4E2-8A090067BCB0}•••
+12•R•Desktop Gadgets•explorer.exe shell:::{37efd44d-ef8d-41b1-940d-96973a50e9e0}•••
+12•R•Desktop in Favorites•explorer.exe shell:::{04731B67-D933-450a-90E6-4ACD2E9408FE}•••
+12•R•Device Manager•explorer.exe shell:::{74246bfc-4c96-11d0-abef-0020af6b0b7a}•••
+12•R•Devices and Printers•explorer.exe shell:::{A8A91A66-3A7D-4424-8D24-04E180695C7A}•••
+12•R•Display (DPI)•explorer.exe shell:::{C555438B-3C23-4769-A71F-B6D3D9B6053A}•••
+12•R•Ease of Access Center•explorer.exe shell:::{D555645E-D4F8-4c29-A827-D93C859C4F2A}•••
+12•R•E-mail (default program)•explorer.exe shell:::{2559a1f5-21d7-11d4-bdaf-00c04f60b9f0}•••
+12•R•Favorites•explorer.exe shell:::{323CA680-C24D-4099-B94D-446DD2D7249E}•••
+12•R•Flip 3D•explorer.exe shell:::{3080F90E-D7AD-11D9-BD98-0000947B0257}•••
+12•R•Folder Options•explorer.exe shell:::{6DFD7C5C-2451-11d3-A299-00C04F8EF6AF}•••
+12•R•Font Settings•explorer.exe shell:::{93412589-74D4-4E4E-AD0E-E0CB621440FD}•••
+12•R•Fonts•explorer.exe shell:::{BD84B380-8CA2-1069-AB1D-08000948534}•••
+12•R•Gadgets•explorer.exe shell:::{37efd44d-ef8d-41b1-940d-96973a50e9e0}•••
+12•R•Game Controllers•explorer.exe shell:::{259EF4B1-E6C9-4176-B574-481532C9BCE8}•••
+12•R•Games Explorer•explorer.exe shell:::{ED228FDF-9EA8-4870-83b1-96b02CFE0D52}•••
+12•R•Get Programs•explorer.exe shell:::{15eae92e-f17a-4431-9f28-805e482dafd4}•••
+12•R•Getting Started•explorer.exe shell:::{CB1B7F8C-C50A-4176-B604-9E24DEE8D4D1}•••
+12•R•Help and Support•explorer.exe shell:::{2559a1f1-21d7-11d4-bdaf-00c04f60b9f0}•••
+12•R•HomeGroup•explorer.exe shell:::{67CA7650-96E6-4FDD-BB43-A8E774F73A57}•••
+12•R•Indexing Options•explorer.exe shell:::{87D66A43-7B11-4A28-9811-C86EE395ACF7}•••
+12•R•Infared•explorer.exe shell:::{A0275511-0E86-4ECA-97C2-ECD8F1221D08}•••
+12•R•Installed Updates•explorer.exe shell:::{d450a8a1-9568-45c7-9c0e-b4f9fb4537bd}•••
+12•R•Internet Options•explorer.exe shell:::{A3DD4F92-658A-410F-84FD-6FBBBEF2FFFE}•••
+12•R•iSCCI Initiator•explorer.exe shell:::{A304259D-52B8-4526-8B1A-A1D6CECC8243}•••
+12•R•Keyboard Properties•explorer.exe shell:::{725BE8F7-668E-4C7B-8F90-46BDB0936430}•••
+12•R•Libraries•explorer.exe shell:::{031E4825-7B94-4dc3-B131-E946B44C8DD5}•••
+12•R•Location•explorer.exe shell:::{00C6D95F-329C-409a-81D7-C46C66EA7F33}•••
+12•R•Location and Other Sensors•explorer.exe shell:::{E9950154-C418-419e-A90A-20C5287AE24B}•••
+12•R•Manage Wireless Networks•explorer.exe shell:::{1fa9085f-25a2-489b-85d4-86326eedcd87}•••
+12•R•Mobility Center•explorer.exe shell:::{5ea4f148-308c-46d7-98a9-49041b1dd468}•••
+12•R•Mouse Properties•explorer.exe shell:::{6C8EEC18-8D75-41B2-A177-8831D59D2D50}•••
+12•R•My Documents•explorer.exe shell:::{450d8fba-ad25-11d0-98a8-0800361b1103}•••
+12•R•Network•explorer.exe shell:::{F02C1A0D-BE21-4350-88B0-7367FC96EF3C}•••
+12•R•Network and Sharing Center•explorer.exe shell:::{8E908FC9-BECC-40f6-915B-F4CA0E70D03D}•••
+12•R•Network Center Notification area pop-up•explorer.exe shell:::{38A98528-6CBF-4CA9-8DC0-B1E1D10F7B1B}•••
+12•R•Network Connections•explorer.exe shell:::{7007ACC7-3202-11D1-AAD2-00805FC1270E}•••
+12•R•Network Connections•explorer.exe shell:::{992CFFA0-F557-101A-88EC-00DD010CCC48}•••
+12•R•Network Map•explorer.exe shell:::{E7DE9B1A-7533-4556-9484-B26FB486475E}•••
+12•R•Network Neighborhood•explorer.exe shell:::{208D2C60-3AEA-1069-A2D7-O8002B30309D}•••
+12•R•Network (WorkGroup) Places•explorer.exe shell:::{208D2C60-3AEA-1069-A2D7-08002B30309D}•••
+12•R•Notification Area Icons•explorer.exe shell:::{05d7b0f4-2121-4eff-bf6b-ed3f69b894d9}•••
+12•R•NVIDIA Control Panel (if driver installed)•explorer.exe shell:::{0bbca823-e77d-419e-9a44-5adec2c8eeb0}•••
+12•R•Offline Files Folder•explorer.exe shell:::{AFDB1F70-2A4C-11d2-9039-00C04F8EEB3E}•••
+12•R•Parental Controls•explorer.exe shell:::{96AE8D84-A250-4520-95A5-A47A7E3C548B}•••
+12•R•Pen and Touch•explorer.exe shell:::{F82DF8F7-8B9F-442E-A48C-818EA735FF9B}•••
+12•R•People Near Me•explorer.exe shell:::{5224F545-A443-4859-BA23-7B5A95BDC8EF}•••
+12•R•Performance Information and Tools•explorer.exe shell:::{78F3955E-3B90-4184-BD14-5397C15F1EFC}•••
+12•R•Personalization•explorer.exe shell:::{ED834ED6-4B5A-4bfe-8F11-A626DCB6A921}•••
+12•R•Phone & Modem Location Information•explorer.exe shell:::{40419485-C444-4567-851A-2DD7BFA1684D}•••
+12•R•Power Options•explorer.exe shell:::{025A5937-A6BE-4686-A844-36FE4BEC8B6D}•••
+12•R•Printers•explorer.exe shell:::{2227A280-3AEA-1069-A2DE-08002B30309D}•••
+12•R•Printers•explorer.exe shell:::{863aa9fd-42df-457b-8e4d-0de1b8015c60}•••
+12•R•Problem Reports (Action Center)•explorer.exe shell:::{BB64F8A7-BEE7-4E1A-AB8D-7D8273F7FDB6}•••
+12•R•Programs and Features•explorer.exe shell:::{7b81be6a-ce2b-4676-a29e-eb907a5126c5}•••
+12•R•Public folder•explorer.exe shell:::{4336a54d-038b-4685-ab02-99bb52d3fb8b}•••
+12•R•Recent Places•explorer.exe shell:::{22877a6d-37a1-461a-91b0-dbda5aaebc99}•••
+12•R•Recovery (System Restore)•explorer.exe shell:::{9FE63AFD-59CF-4419-9775-ABCC3849F861}•••
+12•R•Recycle Bin•explorer.exe shell:::{645FF040-5081-101B-9F08-00AA002F954E}•••
+12•R•Region and Language•explorer.exe shell:::{62d8ed13-c9d0-4ce8-a914-47dd628fb1b0}•••
+12•R•RemoteApp and Desktop Connections•explorer.exe shell:::{241D7C96-F8BF-4F85-B01F-E2B043341A4B}•••
+12•R•Run•explorer.exe shell:::{2559a1f3-21d7-11d4-bdaf-00c04f60b9f0}•••
+12•R•Search•explorer.exe shell:::{2559a1f0-21d7-11d4-bdaf-00c04f60b9f0}•••
+12•R•Set Program Access and Defaults•explorer.exe shell:::{2559a1f7-21d7-11d4-bdaf-00c04f60b9f0}•••
+12•R•Show Desktop•explorer.exe shell:::{3080F90D-D7AD-11D9-BD98-0000947B0257}•••
+12•R•Sound•explorer.exe shell:::{F2DDFC82-8F12-4CDD-B7DC-D4FE1425AA4D}•••
+12•R•Speech Recognition•explorer.exe shell:::{58E3C745-D971-4081-9034-86E34B30836A}•••
+12•R•Sync Center•explorer.exe shell:::{9C73F5E5-7AE7-4E32-A8E8-8D23B85255BF}•••
+12•R•System•explorer.exe shell:::{BB06C0E4-D293-4f75-8A90-CB05B6477EEE}•••
+12•R•System Icons•explorer.exe shell:::{05d7b0f4-2121-4eff-bf6b-ed3f69b894d9}•••
+12•R•Tablet PC Settings•explorer.exe shell:::{80F3F1D5-FECA-45F3-BC32-752C152E456E}•••
+12•R•Taskbar and Start Menu•explorer.exe shell:::{0DF44EAA-FF21-4412-828E-260A8728E7F1}•••
+12•R•Text to Speech•explorer.exe shell:::{D17D1D6D-CC3F-4815-8FE3-607E7D5D10B3}•••
+12•R•Time and Date•explorer.exe shell:::{E2E7934B-DCE5-43C4-9576-7FE4F75E7480}•••
+12•R•Troubleshooting•explorer.exe shell:::{C58C4893-3BE0-4B45-ABB5-A63E4B8C8651}•••
+12•R•User Accounts•explorer.exe shell:::{60632754-c523-4b62-b45c-4172da012619}•••
+12•R•User Folder•explorer.exe shell:::{59031a47-3f72-44a7-89c5-5595fe6b30ee}•••
+12•R•User Pinned•explorer.exe shell:::{1f3427c8-5c10-4210-aa03-2ee45287d668}•••
+12•R•Web Browser (default)•explorer.exe shell:::{871C5380-42A0-1069-A2EA-08002B30309D}•••
+12•R•Windows Anytime Upgrade•explorer.exe shell:::{BE122A0E-4503-11DA-8BDE-F66BAD1E3F3A}•••
+12•R•Windows Cardspace•explorer.exe shell:::{78CB147A-98EA-4AA6-B0DF-C8681F69341C}•••
+12•R•Windows Defender•explorer.exe shell:::{D8559EB9-20C0-410E-BEDA-7ED416AECC2A}•••
+12•R•Windows Features•explorer.exe shell:::{67718415-c450-4f3c-bf8a-b487642dc39b}•••
+12•R•WEI•explorer.exe shell:::{78F3955E-3B90-4184-BD14-5397C15F1EFC}•••
+12•R•Windows Firewall•explorer.exe shell:::{4026492F-2F69-46B8-B9BF-5654FC07E423}•••
+12•R•Windows Mobility Center•explorer.exe shell:::{5ea4f148-308c-46d7-98a9-49041b1dd468}•••
+12•R•Windows SideShow•explorer.exe shell:::{E95A4861-D57A-4be1-AD0F-35267E261739}•••
+12•R•Windows Update•explorer.exe shell:::{36eef7db-88ad-4e81-ad49-0e313f0c35f8}•••
+13•S•!•{!}•••
+13•S•#•{#}•••
+13•S•+•{+}•••
+13•S•^•{^}•••
+13•S•Paste from Clipboard•^{vk56}•••
+13•S•Copy to Clipboard•^{vk43}•••
+13•S•Cut to Clipboard•^{vk58}•••
+13•S•Enter key•{Enter}•••
+13•S•Escape key•{Escape}•••
+13•S•Space key•{Space}•••
+13•S•Tab key•{Tab}•••
+13•S•Backspace•{Backspace}•••
+13•S•Delete•{Delete}•••
+13•S•Insert•{Insert}•••
+13•S•Up-arrow key•{Up}•••
+13•S•Down-arrow down key•{Down}•••
+13•S•Left-arrow key•{Left}•••
+13•S•Right-arrow key•{Right}•••
+13•S•Home key•{Home}•••
+13•S•End key•{End}•••
+13•S•Page-up key•{PgUp}•••
+13•S•Page-down key•{PgDn}•••
+13•S•CapsLock•{CapsLock}•••
+13•S•ScrollLock•{ScrollLock}•••
+13•S•NumLock•{NumLock}•••
+13•S•Control key•{Control}•••
+13•S•Left Control key•{LControl}•••
+13•S•Right Control key•{RControl}•••
+13•S•Hold Control key down until {Ctrl Up}•{Control Down}•••
+13•S•Alt key•{Alt}•••
+13•S•Left Alt key•{LAlt}•••
+13•S•Right Alt key•{RAlt}•••
+13•S•Hold the Alt key down until {Alt Up}•{Alt Down}•••
+13•S•Shift key•{Shift}•••
+13•S•Left Shift key•{LShift}•••
+13•S•Right Shift key•{RShift}•••
+13•S•Hold the Shift key down until {Shift Up}•{Shift Down}•••
+13•S•Left Windows key•{LWin}•••
+13•S•Right Windows key•{RWin}•••
+13•S•Hold the left Windows key down until {LWin Up}•{LWin Down}•••
+13•S•Hold the right Windows key down until {RWin Up}•{RWin Down}•••
+13•S•Windows App key (right-click or context menu)•{AppsKey}•••
+13•S•Computer Sleep key•{Sleep}•••
+13•S•Numpad digit key 0•{Numpad0}•••
+13•S•Numpad digit key 1•{Numpad1}•••
+13•S•Numpad digit key 2•{Numpad2}•••
+13•S•Numpad digit key 3•{Numpad3}•••
+13•S•Numpad digit key 4•{Numpad4}•••
+13•S•Numpad digit key 5•{Numpad5}•••
+13•S•Numpad digit key 6•{Numpad6}•••
+13•S•Numpad digit key 7•{Numpad7}•••
+13•S•Numpad digit key 8•{Numpad8}•••
+13•S•Numpad digit key 9•{Numpad9}•••
+13•S•Enter key on keypad•{NumpadEnter}•••
+13•S•Numpad Multiply•{NumpadMult}•••
+13•S•Numpad Divide•{NumpadDiv}•••
+13•S•Numpad Add•{NumpadAdd}•••
+13•S•Numpad Subtract•{NumpadSub}•••
+13•S•Delete key on keypad•{NumpadDel}•••
+13•S•Insert key on keypad•{NumpadIns}•••
+13•S•Clear key on keypad•{NumpadClear}•••
+13•S•Up-arrow key on keypad•{NumpadUp}•••
+13•S•Down-arrow key on keypad•{NumpadDown}•••
+13•S•Left-arrow key on keypad•{NumpadLeft}•••
+13•S•Right-arrow key on keypad•{NumpadRight}•••
+13•S•Home key on keypad•{NumpadHome}•••
+13•S•End key on keypad•{NumpadEnd}•••
+13•S•Page-up key on keypad•{NumpadPgUp}•••
+13•S•Page-down key on keypad•{NumpadPgDn}•••
+13•S•Print Screen•{PrintScreen}•••
+13•S•Ctrl+break•{CtrlBreak}•••
+13•S•Pause•{Pause}•••
+13•S•Function key F1•{F1}•••
+13•S•Function key F2•{F2}•••
+13•S•Function key F3•{F3}•••
+13•S•Function key F4•{F4}•••
+13•S•Function key F5•{F5}•••
+13•S•Function key F6•{F6}•••
+13•S•Function key F7•{F7}•••
+13•S•Function key F8•{F8}•••
+13•S•Function key F9•{F9}•••
+13•S•Function key F10•{F10}•••
+13•S•Function key F11•{F11}•••
+13•S•Function key F12•{F12}•••
+14•S•Character left•{Left}
+14•S•5 Characters left•{Left 5}
+14•S•Character right•{Right}
+14•S•Word left•^{Left}
+14•S•3 Words left•^{Left 3}
+14•S•Word right•^{Right}
+14•S•Line beginning•{Home}
+14•S•Line end•{End}
+14•S•Document beginning•^{Home}
+14•S•Document end•^{End}
+14•S•Paragraph up•^{Up}
+14•S•Paragraph down•^{Down}
+14•S•Delete word left•^{Backspace}
+14•S•Delete word right•^{Delete}
+14•S•Wait 1 second•{1000}
+14•S•Wait 10 miliseconds•{10}
+15•S•Mouse wheel down•{WheelDown}•••
+15•S•Mouse wheel up•{WheelUp}•••
+15•S•Mouse wheel left•{WheelLeft}•••
+15•S•Mouse wheel right•{WheelRight}•••
+15•S•Mouse left button•{LButton}•••
+15•S•Mouse right button•{RButton}•••
+15•S•Mouse middle button•{MButton}•••
+15•S•Mouse X1 button•{XButton1}•••
+15•S•Mouse X2 button•{XButton2}•••
+15•S•Browser back•{Browser_Back}•••
+15•S•Browser forward•{Browser_Forward}•••
+15•S•Browser refresh•{Browser_Refresh}•••
+15•S•Browser stop•{Browser_Stop}•••
+15•S•Browser search•{Browser_Search}•••
+15•S•Browser favorites•{Browser_Favorites}•••
+15•S•Browser run and go to the home page•{Browser_Home}•••
+15•S•Mute/unmute the master volume•{Volume_Mute}•••
+15•S•Reduce the master volume•{Volume_Down}•••
+15•S•Increase the master volume•{Volume_Up}•••
+15•S•Select next track in media player•{Media_Next}•••
+15•S•Select previous track in media player•{Media_Prev}•••
+15•S•Stop media player•{Media_Stop}•••
+15•S•Play/pause media player•{Media_Play_Pause}•••
+15•S•Launch the email application•{Launch_Mail}•••
+15•S•Launch media player•{Launch_Media}•••
+15•S•Launch user app1•{Launch_App1}•••
+15•S•Launch user app2•{Launch_App2}•••
+16•S•Current user's time•%A_Time%•••
+16•S•Current user's short date•%A_ShortDate%•••
+16•S•Current user's long date•%A_LongDate%•••
+16•S•Current 2-digit year•%A_YY%•••
+16•S•Current year•%A_YYYY%•••
+16•S•Current 2-digit month•%A_MM%•••
+16•S•Current 2-digit day of the month•%A_DD%•••
+16•S•Current month's full name•%A_MMMM%•••
+16•S•Current month's abbreviation•%A_MMM%•••
+16•S•Current day of the week's full name•%A_DDDD%•••
+16•S•Current day of the week's 3-letter abbreviation•%A_DDD%•••
+16•S•Current 1-digit day of the week•%A_Wday%•••
+16•S•Current day of the year•%A_Yday%•••
+16•S•Current year and week number•%A_Yweek%•••
+16•S•Current 2-digit hour•%A_Hour%•••
+16•S•Current 2-digit minute•%A_Min%•••
+16•S•Current 2-digit second•%A_Sec%•••
+16•S•Current 3-digit millisecond•%A_Msec%•••
+16•S•Current local time in YYYYMMDDHH24MISS•%A_Now%•••
+16•S•Current UTC time in YYYYMMDDHH24MISS•%A_NowUTC%•••
+16•S•Miliseconds since the reboot•%A_TickCount%•••
+17•S•A_OSType - type of operating system being run•%A_OSType%•••
+17•S•A_OSVersion - version of operating system being run•%A_OSVersion%•••
+17•S•A_Is64bitOS - contains 1 (true) if the OS is 64-bit or 0 (false) if it is 32-bit•%A_Is64bitOS%•••
+17•S•A_PtrSize - size of a pointer, in bytes•%A_PtrSize%•••
+17•S•A_Language - system's default language, 4-digit code•%A_Language%•••
+17•S•A_ComputerName - name of the computer as seen on the network•%A_ComputerName%•••
+17•S•A_UserName - logon name of the user who launched this script•%A_UserName%•••
+17•S•A_WinDir - Windows directory•%A_WinDir%•••
+17•S•A_ProgramFiles - Program Files directory•%A_ProgramFiles%•••
+17•S•A_AppData - folder containing the current user's application-specific data•%A_AppData%•••
+17•S•A_AppDataCommon - folder containing the all-users application-specific data•%A_AppDataCommon%•••
+17•S•A_Desktop - folder containing the current user's desktop files•%A_Desktop%•••
+17•S•A_DesktopCommon - folder containing the all-users desktop files•%A_DesktopCommon%•••
+17•S•A_StartMenu - current user's Start Menu folder•%A_StartMenu%•••
+17•S•A_StartMenuCommon - all-users Start Menu folder•%A_StartMenuCommon%•••
+17•S•A_Programs - Programs folder in the current user's Start Menu•%A_Programs%•••
+17•S•A_ProgramsCommon - Programs folder in the all-users Start Menu•%A_ProgramsCommon%•••
+17•S•A_Startup - Startup folder in the current user's Start Menu•%A_Startup%•••
+17•S•A_StartupCommon - Startup folder in the all-users Start Menu•%A_StartupCommon%•••
+17•S•A_MyDocuments - current user's "My Documents" folder•%A_MyDocuments%•••
+17•S•A_Temp - full path and name of the folder designated to hold temporary files•%A_Temp%•••
+17•S•A_IsAdmin - ff the current user has admin rights, this variable contains 1, otherwise 0•%A_IsAdmin%•••
+17•S•A_ScreenWidth - width of the primary monitor, in pixels•%A_ScreenWidth%•••
+17•S•A_ScreenHeight - height of the primary monitor, in pixels•%A_ScreenHeight%•••
+17•S•A_ScreenDPI - number of pixels per logical inch along the screen width•%A_ScreenDPI%•••
+17•S•A_IPAddress1 - IP addresses of the first network adapter in the computer•%A_IPAddress1%•••
+17•S•A_IPAddress2 - IP addresses of the second network adapter in the computer•%A_IPAddress2%•••
+17•S•A_IPAddress3 - IP addresses of the third network adapter in the computer•%A_IPAddress3%•••
+17•S•A_IPAddress4 - IP addresses of the fourth network adapter in the computer•%A_IPAddress4%•••
+17•S•A_Cursor - type of mouse cursor currently being displayed•%A_Cursor%•••
+17•S•A_CaretX - current X coordinate of the caret (text insertion point)•%A_CaretX%•••
+17•S•A_CaretY - current Y coordinate of the caret (text insertion point)•%A_CaretY%•••
+17•S•Clipboard - contents of the OS's clipboard, which can be read or written to•%Clipboard%•••
+17•S•A_WorkingDir - programs's current working directory•%A_WorkingDir%•••
+17•S•A_ScriptDir - full path of the directory where the program is located•%A_ScriptDir%•••
+17•S•A_TitleMatchMode - current mode set by SetTitleMatchMode: 1, 2, 3, or RegEx•%A_TitleMatchMode%•••
+17•S•A_TitleMatchModeSpeed - current match speed set by SetTitleMatchMode•%A_TitleMatchModeSpeed%•••
+17•S•A_DetectHiddenWindows - current mode (On or Off) set by DetectHiddenWindows•%A_DetectHiddenWindows%•••
+17•S•A_DetectHiddenText - current mode (On or Off) set by DetectHiddenText•%A_DetectHiddenText%•••
+17•S•A_AutoTrim - current mode (On or Off) set by AutoTrim•%A_AutoTrim%•••
+17•S•A_StringCaseSense - current mode (On, Off, or Locale) set by StringCaseSense•%A_StringCaseSense%•••
+17•S•A_FileEncoding - default encoding for various commands•%A_FileEncoding%•••
+17•S•A_FormatInteger - current integer format (H or D) set by SetFormat•%A_FormatInteger%•••
+17•S•A_FormatFloat - current floating point number format set by SetFormat•%A_FormatFloat%•••
+17•S•A_KeyDelay - current delay set by SetKeyDelay•%A_KeyDelay%•••
+17•S•A_WinDelay - current delay set by SetWinDelay•%A_WinDelay%•••
+17•S•A_ControlDelay - current delay set by SetControlDelay•%A_ControlDelay%•••
+17•S•A_MouseDelay - current delay set by SetMouseDelay•%A_MouseDelay%•••
+17•S•A_DefaultMouseSpeed - current speed set by SetDefaultMouseSpeed•%A_DefaultMouseSpeed%•••
+17•S•A_RegView - current registry view as set by SetRegView•%A_RegView%•••
+17•S•A_TimeIdle - milliseconds elapsed since the system last received input•%A_TimeIdle%•••
+17•S•A_TimeIdlePhysical - milliseconds elapsed since the system last physical input•%A_TimeIdlePhysical%•••
+17•S•A_Gui - name or number of the GUI that launched the current thread•%A_Gui%•••
+17•S•A_GuiControl - variable associated with the GUI control that launched the current thread•%A_GuiControl%•••
+17•S•A_GuiWidth - GUI window's width•%A_GuiWidth%•••
+17•S•A_GuiHeight - GUI window's height•%A_GuiHeight%•••
+17•S•A_GuiX - X coordinate for GuiContextMenu and GuiDropFiles events•%A_GuiX%•••
+17•S•A_GuiY - Y coordinate for GuiContextMenu and GuiDropFiles events•%A_GuiY%•••
+17•S•A_GuiControlEvent - type of event that launched the current thread•%A_GuiControlEvent%•••
+17•S•A_GuiEvent - type of event that launched the current thread•%A_GuiEvent%•••
+17•S•A_EventInfo - additional information about the events•%A_EventInfo%•••
+17•S•A_ThisMenuItem - name of the most recently selected custom menu item•%A_ThisMenuItem%•••
+17•S•A_ThisMenu - name of the menu from which A_ThisMenuItem was selected•%A_ThisMenu%•••
+17•S•A_ThisMenuItemPos - position of a menu item within a menu•%A_ThisMenuItemPos%•••
+17•S•A_ThisHotkey - most recently executed hotkey or non-auto-replace hotstring•%A_ThisHotkey%•••
+17•S•A_ThisLabel - most recently executed label•%A_ThisLabel%•••
+17•S•A_PriorHotkey - previously executed hotkey or non-auto-replace hotstring•%A_PriorHotkey%•••
+17•S•A_PriorKey - last key pressed prior to the most recent key-press or key-release•%A_PriorKey%•••
+17•S•A_TimeSinceThisHotkey - milliseconds elapsed since A_ThisHotkey was pressed•%A_TimeSinceThisHotkey%•••
+17•S•A_TimeSincePriorHotkey - milliseconds elapsed since A_PriorHotkey was pressed•%A_TimeSincePriorHotkey%•••
+17•S•A_EndChar - ending character pressed by the user to trigger the most recent hotstring•%A_EndChar%•••
+17•S•A_LastError - result from the OS's GetLastError() function•%A_LastError%•••
+17•S•A_Index - number of the current loop iteration•%A_Index%•••
+17•S•A_LoopField - contents of the current substring (field) from InputVar•%A_LoopField%•••
+------------------
